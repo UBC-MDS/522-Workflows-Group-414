@@ -7,45 +7,47 @@ Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that im
 
 ### Variable Definitions
 
-1. Age Number Age in years
+1. **A1_score** (Int; 0, 1) Prompt: S/he often notices small sounds when others do not
 
-2. Gender String Male or Female
+11. **A2_score** (Int; 0, 1) Prompt: S/he usually concentrates more on the whole picture, rather than the small details
 
-3. Ethnicity String List of common ethnicities in text format
+12. **A3_score** (Int; 0, 1) Prompt: In a social group, s/he can easily keep track of several different people’s conversations
 
-4. Born with jaundice Boolean (yes or no) Whether the case was born with jaundice
+13. **A4_score** (Int; 0, 1) Prompt: S/he finds it easy to go back and forth between different activities
 
-5. Family member with PDD Boolean (yes or no) Whether any immediate family member has a PDD
+14. **A5_score** (Int; 0, 1) Prompt: S/he doesn’t know how to keep a conversation going with his/her peers
 
-6. Who is completing the test String Parent, self, caregiver, medical staff, clinician ,etc.
+15. **A6_score** (Int; 0, 1) Prompt: S/he is good at social chit-chat
 
-7. Country of residence String List of countries in text format
+16. **A7_score** (Int; 0, 1) Prompt: When s/he is read a story, s/he finds it difficult to work out the character’s intentions or feelings
 
-8. Used the screening app before Boolean (yes or no) Whether the user has used a screening app
+17. **A8_score** (Int; 0, 1) Prompt: When s/he was in preschool, s/he used to enjoy playing games involving pretending with other children
 
-9. Screening Method Type Integer (0,1,2,3) The type of screening methods chosen based on age category (0=toddler, 1=child, 2= adolescent, 3= adult)
+18. **A9_score** (Int; 0, 1) Prompt: S/he finds it easy to work out what someone is thinking or feeling just by looking at their face
 
-10. Question 1 Answer Binary (0, 1) The answer code of the question based on the screening method used
+19. **A10_score** (Int; 0, 1) Prompt: S/he finds it hard to make new friends
 
-11. Question 2 Answer Binary (0, 1) The answer code of the question based on the screening method used
+1. **Age** - (int) Age in years
 
-12. Question 3 Answer Binary (0, 1) The answer code of the question based on the screening method used
+2. **Gender** - (String) M or F
 
-13. Question 4 Answer Binary (0, 1) The answer code of the question based on the screening method used
+3. **Ethnicity** (String)  Common Ethnicities defined for each individual
 
-14. Question 5 Answer Binary (0, 1) The answer code of the question based on the screening method used
+4. **Born with jaundice?** (String; yes or no) Was individual born with jaundice?
 
-15. Question 6 Answer Binary (0, 1) The answer code of the question based on the screening method used
+9. **Autism** (String; yes or no) Was individual diagnosed with autism? (need to confirm this?)
 
-16. Question 7 Answer Binary (0, 1) The answer code of the question based on the screening method used
+7. **Country of residence** (String) 
 
-17. Question 8 Answer Binary (0, 1) The answer code of the question based on the screening method used
+8. **Used the screening app before?** Boolean (yes or no) Whether the user has used a screening app
 
-18. Question 9 Answer Binary (0, 1) The answer code of the question based on the screening method used
+20. **Result** (Int) The final score obtained based on the scoring algorithm of the screening method used. This was computed in an automated manner.
 
-19. Question 10 Answer Binary (0, 1) The answer code of the question based on the screening method used
+7. **age_desc** (String)
 
-20. Screening Score Integer The final score obtained based on the scoring algorithm of the screening method used. This was computed in an automated manner.
+6. **relation** (String) Parent, self, caregiver, medical staff, clinician ,etc.
+
+
 
 Target - ASD Classification (yes if final score > 6; no if final score <= 6)
 
