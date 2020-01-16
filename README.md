@@ -5,6 +5,8 @@
 
 Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the prescence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient. Affecting 1.5% of the population, with many more cases going undetected, a easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey. 
 
+The Autism Spectrum Quotient-10 (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each questions has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, 1 point is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, 1 point is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to reccommend a healthcare opinion. Any total score with a value greater than 6 is classified as potential autism and that individual is recommended for a specialist diagnostic assessment.
+
 ### Variable Definitions
 
 1. **A1_score** (Int; 0, 1) Prompt: S/he often notices small sounds when others do not
@@ -43,24 +45,31 @@ Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that im
 
 20. **Result** (Int) The final score obtained based on the scoring algorithm of the screening method used. This was computed in an automated manner.
 
-7. **age_desc** (String)
+7. **age_desc** (String) Age group
 
 6. **relation** (String) Parent, self, caregiver, medical staff, clinician ,etc.
 
 
 
-Target - ASD Classification (yes if final score > 6; no if final score <= 6)
+**Target** - ASD Classification (yes if final score > 6; no if final score <= 6)
 
 ## Research Questions
 
+TBD
+
 ## Plan of Action
+
+TBD
+- machine learning model
+- confusion matrix (diagnostic TP, FN, FP, TN are important)
+
 
 
 
 References: 
 
-(https://journals.sagepub.com/doi/full/10.1177/1460458218796636?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
+1.[An accessible and efficient autism screening method for behavioural data and predictive analyses by Fadi Thabtah](https://journals.sagepub.com/doi/full/10.1177/1460458218796636?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
 
-(https://www-sciencedirect-com.proxy.lib.sfu.ca/science/article/pii/S0890856711010331#!)
+[Toward brief “Red Flags” for autism screening: The Short Autism Spectrum Quotient and the Short Quantitative Checklist for Autism in toddlers in 1,000 cases and 3,000 controls by Allison C. et. al.](https://www-sciencedirect-com.proxy.lib.sfu.ca/science/article/pii/S0890856711010331#!)
 
-(https://micmrc.org/system/files/webinars/AQ10-Child.pdf)
+[Autism Spectrum Quotient-Child Version (AQ-10)](https://micmrc.org/system/files/webinars/AQ10-Child.pdf)
