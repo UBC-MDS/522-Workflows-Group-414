@@ -57,6 +57,8 @@ The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions int
 
 *Sub-Questions:*
 
+- Does predictor importance change if we separate the data based on gender? (predictive)
+
 - If a parent takes the test for their child, are there more incorrect ASD classifications/miss-classifications? (Descriptive)
 
 - Do AQ-score features matter more than background features (sex, ethnicity, relation) when classifying for ASD? (predictive)
