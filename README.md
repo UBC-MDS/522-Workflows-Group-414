@@ -55,13 +55,39 @@ The Autism Spectrum Quotient-10 (AQ-10) consists of 10 questions intended to dif
 
 ## Research Questions
 
-TBD
+### Descriptive 
+
+- What is the proportion of female that are diagnosed with Autism Spectrum Disorder?
+
+### Exploratory 
+
+- Is gender or age affect the diagnoses of individuals with Autism Spectrum Disorder in a set of data?
+
+### Inferential 
+
+- Is age correlate with the diagnoses of Autism Spectrum Disorder?
+
+- Is using screening app before the diagnoses correlate with the diagnoses of Autism Spectrum Disorder?
+
+### Prediction 
+
+- What Autism Spectrum Disorder Classification will be assigned to an individual who takes the Autism Spectrum Quotient-10?
+
+- What feature most strongly predicts whether an individual will be diagnosed with Autism Spectrum Disorder?
+
+- What score from the Autism Spectrum Quotient-10 is the strongest predictor of an individual being diagnoses with Autism Spectrum Disorder?
+
 
 ## Plan of Action
 
 TBD
-- machine learning model
-- confusion matrix (diagnostic TP, FN, FP, TN are important)
+
+### Scripts 
+- download_data.py
+- tidy_data.py
+- exploritory_plot.R
+- machine_learning_predict.py
+  - confusion matrix (diagnostic TP, FN, FP, TN are important)
 
 
 
