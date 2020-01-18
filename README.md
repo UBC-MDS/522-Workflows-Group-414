@@ -66,20 +66,20 @@ The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions int
 - What is the proportion of females that are diagnosed with Autism Spectrum Disorder? (Descriptive)
 
 
-- Is gender or age affect the diagnoses of individuals with Autism Spectrum Disorder in a set of data? (Exploratory)
+- Is gender or age a factor that affects the diagnoses of individuals with Autism Spectrum Disorder in a set of data? (Exploratory)
 
-- Is age correlate with the diagnoses of Autism Spectrum Disorder?(Inferential )
+- Is age correlated with the diagnoses of Autism Spectrum Disorder?(Inferential )
 
-- Is using screening app before the diagnoses correlate with the diagnoses of Autism Spectrum Disorder? (Inferential)
+- Is using screening apps before the diagnoses correlated with the diagnoses of Autism Spectrum Disorder? (Inferential)
 
 - What Autism Spectrum Disorder Classification will be assigned to an individual who takes the Autism Spectrum Quotient-10?
 (Predictive)
 
-- What score from the Autism Spectrum Quotient-10 is the strongest predictor of an individual being diagnoses with Autism Spectrum Disorder? (Predictive)
+- What score from the Autism Spectrum Quotient-10 is the strongest predictor of an individual being diagnosed with Autism Spectrum Disorder? (Predictive)
 
 ## Plan of Action
 
-After splitting the data into training and test sets, we plan to conduct an exploratory analysis to detect interesting trends in the data, and determine whether any preprocessing will be required. We will proceed to train multiple classifier models such as KNN and RandomForest. GridSearchCV will be used to optimize hyperparameters for all models. Additionally, we hope to implement a pipeline to make our machine learning methodology as reproducible as possible. We will assess each model's performance on the training data and extract information about what features are considered important to the classification results. We will also place a strong emphasis on determining the types of error we encounter with out models, using confusion matrices. 
+After splitting the data into training and test sets, we plan to conduct an exploratory analysis to detect interesting trends in the data, and determine whether any preprocessing will be required. We will proceed to train multiple classifier models such as KNN and RandomForest. GridSearchCV will be used to optimize hyperparameters for all models and Cross-Valaidation. Additionally, we hope to implement a pipeline to make our machine learning methodology as reproducible as possible. We will assess each model's performance on the training data and extract information about what features are considered important to the classification results. We will also place a strong emphasis on determining the types of error we encounter with our models, using confusion matrices. 
 
 To address reproducibility, we plan to implement an analysis pipeline that will streamline all relevant scripts within one file that can be run from the command line.
 
@@ -96,7 +96,7 @@ To address reproducibility, we plan to implement an analysis pipeline that will 
 
 ## Sharing the Results
 
-A final report will be written in markdown to summarize the problem, question, and our findings. We will have tables containing the different models we trained and their performance on the training and test datasets. We will display confusion matrices for each model to understand differences between precision and recall across the different models. To also want to provide the readers a visual on feature importance in our models. Currently, we are looking to create a heatmap that will have model type on the x-axis and feature name on the y-axis, with a color gradient representing importance. The metric that will determine importance will be confirmed after we finalize our EDA and model selection, but before we start training the models.  
+A final report will be written in markdown to summarize the problem, question, and our findings. We will have tables containing the different models we trained and their performance on the training and test datasets. We will display confusion matrices for each model to understand differences between precision and recall across the different models. We also want to provide the readers a visual on feature importance in our models. Currently, we are looking to create a heatmap that will have model type on the x-axis and feature name on the y-axis, with a color gradient representing importance. The metric that will determine importance will be confirmed after we finalize our EDA and model selection, but before we start training the models.  
 
 ## References: 
 
