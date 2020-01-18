@@ -91,7 +91,8 @@ To address reproducibility, we plan to implement an analysis pipeline that will 
   - confusion matrix (diagnostic TP, FN, FP, TN are important)
 
 ## EDA Discussion
-TBD
+
+[EDA](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/master/EDA_autism-screening.ipynb)
 
 ## Sharing the Results
 
