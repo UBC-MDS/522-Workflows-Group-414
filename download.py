@@ -8,8 +8,6 @@ import zipfile
 import pandas as pd
 import urllib
 import requests
-from sklearn.model_selection import train_test_split
-import numpy as np
 from scipy.io import arff
 
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00419/Autism-Screening-Child-Data%20Plus%20Description.zip"
@@ -42,19 +40,5 @@ df['result'] = df['result'].astype('float')
 for col in df.columns:
     df[col] = df[col].replace('?', 'NA')
 
-
-#split the data
-X = df.drop(['Class/ASD'], axis = 1)
-y = df['Class/ASD']
-
-X_train, X_test, y_train, y_test = train_test_split(X,
-                                                    y,
-                                                    test_size = 0.2,
-                                                    random_state=100)
-
 # Write to csv on hard drive
-df.to_csv("../raw_autism_screening_children.csv", index=False)
-X_train.to_csv("../data/raw_autism_screening_children_X_train.csv", index=False)
-X_test.to_csv("../data/raw_autism_screening_children_X_test.csv", index=False)
-y_train.to_csv("../data/raw_autism_screening_children_y_train.csv", index=False)
-y_test.to_csv("../data/raw_autism_screening_children_y_test.csv", index=False)
+df.to_csv("autism_screening_children.csv", index=False)
