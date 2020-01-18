@@ -3,9 +3,9 @@
 
 ## Data Description
 
-Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the prescence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient. Affecting 1.5% of the population, with many more cases going undetected, a easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey<sup>1,2</sup>. 
+Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient. Affecting 1.5% of the population, with many more cases going undetected, a easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey<sup>1,2</sup>. 
 
-The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each questions has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to reccommend a healthcare opinion. Any total score with a value greater than 6 is classified as potential autism and that individual is recommended for a specialist diagnostic assessment.
+The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. Any total score with a value greater than 6 is classified as potential autism and that individual is recommended for a specialist diagnostic assessment.
 
 ### Variable Definitions
 
@@ -65,10 +65,9 @@ The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions int
 
 - What is the proportion of females that are diagnosed with Autism Spectrum Disorder? (Descriptive)
 
-
 - Is gender or age a factor that affects the diagnoses of individuals with Autism Spectrum Disorder in a set of data? (Exploratory)
 
-- Is age correlated with the diagnoses of Autism Spectrum Disorder?(Inferential )
+- Is age correlated with the diagnoses of Autism Spectrum Disorder? (Inferential)
 
 - Is using screening apps before the diagnoses correlated with the diagnoses of Autism Spectrum Disorder? (Inferential)
 
@@ -79,14 +78,14 @@ The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions int
 
 ## Plan of Action
 
-After splitting the data into training and test sets, we plan to conduct an exploratory analysis to detect interesting trends in the data, and determine whether any preprocessing will be required. We will proceed to train multiple classifier models such as KNN and RandomForest. GridSearchCV will be used to optimize hyperparameters for all models and Cross-Valaidation. Additionally, we hope to implement a pipeline to make our machine learning methodology as reproducible as possible. We will assess each model's performance on the training data and extract information about what features are considered important to the classification results. We will also place a strong emphasis on determining the types of error we encounter with our models, using confusion matrices. 
+After splitting the data into training and test sets, we plan to conduct an exploratory analysis to detect interesting trends in the data, and determine whether any preprocessing will be required. We will proceed to train multiple classifier models such as KNN and RandomForest. GridSearchCV will be used to optimize hyperparameters for all models and Cross-Validation. Additionally, we hope to implement a pipeline to make our machine learning methodology as reproducible as possible. We will assess each model's performance on the training data and extract information about what features are considered important to the classification results. We will also place a strong emphasis on determining the types of error we encounter with our models, using confusion matrices. 
 
 To address reproducibility, we plan to implement an analysis pipeline that will streamline all relevant scripts within one file that can be run from the command line.
 
 ### Scripts 
 - download_data.py
 - tidy_data.py
-- exploritory_plot.R
+- exploratory_plot.R
 - machine_learning_predict.py
   - confusion matrix (diagnostic TP, FN, FP, TN are important)
 
