@@ -103,6 +103,14 @@ We plan to create a summary table of all the columns to identify the ranges for 
 
 A final report will be written in markdown to summarize the problem, question, and our findings. We will have tables containing the different models we trained and their performance on the training and test datasets. We will display confusion matrices for each model to understand differences between precision and recall across the different models. We also want to provide the readers a visual on feature importance in our models. Currently, we are looking to create a heatmap that will have model type on the x-axis and feature name on the y-axis, with a color gradient representing importance. The metric that will determine importance will be confirmed after we finalize our EDA and model selection, but before we start training the models.  
 
+## Usage
+
+To replicate this analysis, clone this github repository, install the necessary dependencies, and type the following into your terminal:
+
+```
+python src/download.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/00419/Autism-Screening-Child-Data%20Plus%20Description.zip --zip_folder=data/autism_screening.zip --data_name=Autism-Child-Data
+```
+
 ## Dependencies (in progress; will be added to in week 2):
 
 Versions will be added when we integreate docker into our project.
