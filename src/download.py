@@ -52,7 +52,7 @@ def main(url, zip_folder, data_name):
     df = pd.DataFrame(data[0], dtype='str')
 
     # Write uncleaned csv to disk
-    df.to_csv("data/"+data_name+".csv")
+    df.to_csv("data/"+data_name+".csv", index=False)
 
 
 
@@ -61,33 +61,33 @@ def main(url, zip_folder, data_name):
 
 
 
-    # Change dtypes of columns
-    for col in df.columns[0:10]:
-        df[col] = df[col].astype('int')
+    # # Change dtypes of columns
+    # for col in df.columns[0:10]:
+    #     df[col] = df[col].astype('int')
 
-    df['age'] = df['age'].astype('float')
-    df['result'] = df['result'].astype('float')
+    # df['age'] = df['age'].astype('float')
+    # df['result'] = df['result'].astype('float')
 
-    # Replace question marks with NAs
-    for col in df.columns:
-        df[col] = df[col].replace('?', 'NA')
+    # # Replace question marks with NAs
+    # for col in df.columns:
+    #     df[col] = df[col].replace('?', 'NA')
 
 
-    #split the data
-    X = df.drop(['Class/ASD'], axis = 1)
-    y = df['Class/ASD']
+    # #split the data
+    # X = df.drop(['Class/ASD'], axis = 1)
+    # y = df['Class/ASD']
 
-    X_train, X_test, y_train, y_test = train_test_split(X,
-                                                        y,
-                                                        test_size = 0.2,
-                                                        random_state=100)
+    # X_train, X_test, y_train, y_test = train_test_split(X,
+    #                                                     y,
+    #                                                     test_size = 0.2,
+    #                                                     random_state=100)
 
-    # Write to csv on hard drive
-    df.to_csv("data/raw_autism_screening_children.csv", index=False)
-    X_train.to_csv("data/raw_autism_screening_children_X_train.csv", index=False)
-    X_test.to_csv("data/raw_autism_screening_children_X_test.csv", index=False)
-    y_train.to_csv("data/raw_autism_screening_children_y_train.csv", index=False, header=False)
-    y_test.to_csv("data/raw_autism_screening_children_y_test.csv", index=False, header=False)
+    # # Write to csv on hard drive
+    # df.to_csv("data/raw_autism_screening_children.csv", index=False)
+    # X_train.to_csv("data/raw_autism_screening_children_X_train.csv", index=False)
+    # X_test.to_csv("data/raw_autism_screening_children_X_test.csv", index=False)
+    # y_train.to_csv("data/raw_autism_screening_children_y_train.csv", index=False, header=False)
+    # y_test.to_csv("data/raw_autism_screening_children_y_test.csv", index=False, header=False)
 
     # Attribution:
     # https://stackoverflow.com/questions/29754980/basic-docopt-example-does-not-work
