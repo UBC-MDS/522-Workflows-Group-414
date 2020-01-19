@@ -31,23 +31,18 @@ def main(url, zip_folder, data_name):
     r = requests.get(url)
 
     # extract content of response object 'r' and write to specified filename
-
     new_directory = zip_folder.split('/')
-    # filename = new_directory[1]
     new_directory = new_directory[0]
-    print(new_directory)
     if not os.path.exists(new_directory):
         os.makedirs(new_directory)
     
-
+    # open the zip folder and write binary content to disk
     with open(zip_folder, 'wb') as f:
-        # os.chdir(new_directory)
         f.write(r.content)
 
     # Extract the arff file located in the zipped folder using python library zipfile
     arff_file = data_name+".arff"
     with zipfile.ZipFile(zip_folder, 'r') as myzip:
-
         myzip.extract(arff_file)
 
     # Use 'scipy.io.arff' library to read in arff file
@@ -56,9 +51,20 @@ def main(url, zip_folder, data_name):
     # The arff file contains a csv in element 0 and a description of the variables in element 1
     df = pd.DataFrame(data[0], dtype='str')
 
+    # Write uncleaned csv to disk
+    df.to_csv("data/"+data_name+".csv")
+
+
+
+
+
+
+
+
     # Change dtypes of columns
     for col in df.columns[0:10]:
         df[col] = df[col].astype('int')
+
     df['age'] = df['age'].astype('float')
     df['result'] = df['result'].astype('float')
 
