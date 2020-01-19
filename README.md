@@ -10,7 +10,7 @@ Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that im
 
 The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
 
-The dataset contains survey results and background information for 292 children between the ages of 4-11 years. The data was obtained from the University of California Irvine Machine learning Repository<sup>4</sup>.
+The dataset contains survey results and background information for 292 children between the ages of 4-11 years. The [data<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++) was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>.
 
 ### Variable Definitions
 
@@ -103,12 +103,33 @@ We plan to create a summary table of all the columns to identify the ranges for 
 
 A final report will be written in markdown to summarize the problem, question, and our findings. We will have tables containing the different models we trained and their performance on the training and test datasets. We will display confusion matrices for each model to understand differences between precision and recall across the different models. We also want to provide the readers a visual on feature importance in our models. Currently, we are looking to create a heatmap that will have model type on the x-axis and feature name on the y-axis, with a color gradient representing importance. The metric that will determine importance will be confirmed after we finalize our EDA and model selection, but before we start training the models.  
 
+## Dependencies (in progress; will be added to in week 2):
+
+Versions will be added when we integreate docker into our project.
+
+**R packages**:
+- tidyverse==
+- reshape2==
+
+**Python packages**:
+- docopt==
+- zipfile==
+- pandas==
+- urllib==
+- requests==
+- sklearn==
+- numpy==
+- scipy==
+
+
 ## References: 
 
-1. [An accessible and efficient autism screening method for behavioural data and predictive analyses by Fadi Thabtah](https://journals.sagepub.com/doi/full/10.1177/1460458218796636?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
+1. Thabtah, F. 2018. "An accessible and efficient autism screening method for behavioural data and predictive analyses". 25(4):1739-1755. Health Informatics Journal.[https://doi.org/10.1177/1460458218796636](https://journals.sagepub.com/doi/full/10.1177/1460458218796636?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
 
-2. [Toward brief “Red Flags” for autism screening: The Short Autism Spectrum Quotient and the Short Quantitative Checklist for Autism in toddlers in 1,000 cases and 3,000 controls by Allison C. et. al.](https://www-sciencedirect-com.proxy.lib.sfu.ca/science/article/pii/S0890856711010331#!)
+2. Allison, C., Auyeung, B., and Baron-Cohen, S. 2012. "Toward brief 'Red Flags' for autism screening: The Short Autism Spectrum Quotient and the Short Quantitative Checklist for Autism in toddlers in 1,000 cases and 3,000 controls". 51(2):202-212. J Am Acad Child Adolesc Psychiatry.[https://doi.org/10.1016/j.jaac.2011.11.003](https://www-sciencedirect-com.proxy.lib.sfu.ca/science/article/pii/S0890856711010331#!)
 
-3. [Autism Spectrum Quotient-Child Version (AQ-10)](https://micmrc.org/system/files/webinars/AQ10-Child.pdf)
+3. [Autism Spectrum Quotient-Child Version (AQ-10)](https://micmrc.org/system/files/webinars/AQ10-Child.pdf).
 
-4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++)
+4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++).
+
+5. Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.” University of California, Irvine, School of Information; Computer Sciences.[http://archive.ics.uci.edu/ml/index.php](http://archive.ics.uci.edu/ml).
