@@ -103,6 +103,25 @@ We plan to create a summary table of all the columns to identify the ranges for 
 
 A final report will be written in markdown to summarize the problem, question, and our findings. We will have tables containing the different models we trained and their performance on the training and test datasets. We will display confusion matrices for each model to understand differences between precision and recall across the different models. We also want to provide the readers a visual on feature importance in our models. Currently, we are looking to create a heatmap that will have model type on the x-axis and feature name on the y-axis, with a color gradient representing importance. The metric that will determine importance will be confirmed after we finalize our EDA and model selection, but before we start training the models.  
 
+## Dependencies (in progress; will be added to in week 2):
+
+Versions will be added when we integreate docker into our project.
+
+**R packages**:
+- tidyverse==
+- reshape2==
+
+**Python packages**:
+- docopt==
+- zipfile==
+- pandas==
+- urllib==
+- requests==
+- sklearn==
+- numpy==
+- scipy==
+
+
 ## References: 
 
 1. Thabtah, F. 2018. "An accessible and efficient autism screening method for behavioural data and predictive analyses". 25(4):1739-1755. Health Informatics Journal.[https://doi.org/10.1177/1460458218796636](https://journals.sagepub.com/doi/full/10.1177/1460458218796636?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed)
