@@ -1,7 +1,11 @@
-"""
-Usage:     
-    download.py [-h | --help] (ARGUMENTS)...
+"""Downloads .zip url to current folder, unzips arff file, loads data, splits data and saves original CSV, as well as train/test splits into a data folder. Currently supports only .zip URLs with a .arff file inside.
 
+Usage: download.py --url=<url> --zip_folder=<zip_folder> --data_name=<data_name>
+
+Options:
+--url=<url>                 URL for the .zip file to be downloaded
+--zip_folder=<zip_folder>   name of the zip folder at the url
+--data_name=<data_name>     name of the file within the zip folder
 """
 
 from docopt import docopt
@@ -12,31 +16,42 @@ import requests
 from sklearn.model_selection import train_test_split
 import numpy as np
 from scipy.io import arff
+import os
 
 # url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00419/Autism-Screening-Child-Data%20Plus%20Description.zip"
-# filename = "autism_screening.zip"
+# zip_folder = "../data/autism_screening.zip"
+# data_name = Austism-Child-Data
 
-if __name__ == '__main__':
-    arguments = docopt(__doc__) # returns a dictionary
-    # Retrieve our list of arguments from the docopt dictionary
-    args = arguments['ARGUMENTS']
-    # Assign the arguments we need
-    url = args[0]
-    filename = args[1]
+
+opt = docopt(__doc__) 
+
+def main(url, zip_folder, data_name):
 
     # send request and save object
     r = requests.get(url)
 
     # extract content of response object 'r' and write to specified filename
-    with open(filename, 'wb') as f:
+
+    new_directory = zip_folder.split('/')
+    # filename = new_directory[1]
+    new_directory = new_directory[0]
+    print(new_directory)
+    if not os.path.exists(new_directory):
+        os.makedirs(new_directory)
+    
+
+    with open(zip_folder, 'wb') as f:
+        # os.chdir(new_directory)
         f.write(r.content)
 
     # Extract the arff file located in the zipped folder using python library zipfile
-    with zipfile.ZipFile(filename, 'r') as myzip:
-        myzip.extract('Autism-Child-Data.arff')
+    arff_file = data_name+".arff"
+    with zipfile.ZipFile(zip_folder, 'r') as myzip:
+
+        myzip.extract(arff_file)
 
     # Use 'scipy.io.arff' library to read in arff file
-    data = arff.loadarff("Autism-Child-Data.arff")
+    data = arff.loadarff(arff_file)
 
     # The arff file contains a csv in element 0 and a description of the variables in element 1
     df = pd.DataFrame(data[0], dtype='str')
@@ -62,11 +77,11 @@ if __name__ == '__main__':
                                                         random_state=100)
 
     # Write to csv on hard drive
-    df.to_csv("../raw_autism_screening_children.csv", index=False)
-    X_train.to_csv("../data/raw_autism_screening_children_X_train.csv", index=False)
-    X_test.to_csv("../data/raw_autism_screening_children_X_test.csv", index=False)
-    y_train.to_csv("../data/raw_autism_screening_children_y_train.csv", index=False, header=False)
-    y_test.to_csv("../data/raw_autism_screening_children_y_test.csv", index=False, header=False)
+    df.to_csv("data/raw_autism_screening_children.csv", index=False)
+    X_train.to_csv("data/raw_autism_screening_children_X_train.csv", index=False)
+    X_test.to_csv("data/raw_autism_screening_children_X_test.csv", index=False)
+    y_train.to_csv("data/raw_autism_screening_children_y_train.csv", index=False, header=False)
+    y_test.to_csv("data/raw_autism_screening_children_y_test.csv", index=False, header=False)
 
     # Attribution:
     # https://stackoverflow.com/questions/29754980/basic-docopt-example-does-not-work
@@ -75,5 +90,5 @@ if __name__ == '__main__':
     # https://discuss.analyticsvidhya.com/t/loading-arff-type-files-in-python/27419
     # https://www.geeksforgeeks.org/get-post-requests-using-python/
 
-
-
+if __name__ == "__main__":
+  main(opt["--url"], opt["--zip_folder"], opt["--data_name"])
