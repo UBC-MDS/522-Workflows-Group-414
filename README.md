@@ -1,11 +1,16 @@
-# An Autism Spectrum Disorder Screening Analysis
+# An Autism Spectrum Disorder Screening Machine Learning Analysis
 ##### *522 Workflows: Group \#414*
+Members: Tejas Phaterpekar, Matthew Connell, Thomas Pin
 
 ## Data Description
 
-Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient. Affecting 1.5% of the population, with many more cases going undetected, a easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey<sup>1,2</sup>. 
+Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey<sup>1,2</sup>. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
 
-The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. Any total score with a value greater than 6 is classified as potential autism and that individual is recommended for a specialist diagnostic assessment.
+
+
+The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
+
+The dataset contains survey results and background information for 292 children between the ages of 4-11 years. The data was obtained from the University of California Irvine Machine learning Repository<sup>4</sup>.
 
 ### Variable Definitions
 
@@ -82,14 +87,15 @@ After splitting the data into training and test sets, we plan to conduct an expl
 
 To address reproducibility, we plan to implement an analysis pipeline that will streamline all relevant scripts within one file that can be run from the command line.
 
-### Scripts 
-- download_data.py
-- tidy_data.py
-- exploratory_plot.R
-- machine_learning_predict.py
-  - confusion matrix (diagnostic TP, FN, FP, TN are important)
+### Planned Scripts 
+- download_data.py -> downloads data with a command line executable
+- tidy_data.py -> tidies data 
+- exploratory_plot.R -> contains code for exploratory analysis/plots
+- machine_learning_predict.py -> contains code for our machine learning procedures
 
 ## EDA Discussion
+
+We plan to create a summary table of all the columns to identify the ranges for each feature and discover any potential outliers. We can also take advantage of the binomial nature of our AQ-10 question features to find the proportion of each question that was answered with a 'yes' (using the mean from the table). One exploratory plot that will be created is a correlational heatmap which will give us insight into potential relationships between predictors and the target variable, as well as any multicolinearity. 
 
 [EDA](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/master/EDA_autism-screening.ipynb)
 
@@ -104,3 +110,5 @@ A final report will be written in markdown to summarize the problem, question, a
 2. [Toward brief “Red Flags” for autism screening: The Short Autism Spectrum Quotient and the Short Quantitative Checklist for Autism in toddlers in 1,000 cases and 3,000 controls by Allison C. et. al.](https://www-sciencedirect-com.proxy.lib.sfu.ca/science/article/pii/S0890856711010331#!)
 
 3. [Autism Spectrum Quotient-Child Version (AQ-10)](https://micmrc.org/system/files/webinars/AQ10-Child.pdf)
+
+4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++)
