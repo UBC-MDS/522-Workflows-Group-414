@@ -1,0 +1,33 @@
+---
+title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
+author: "Matthew Connel, Thomas Pin and Tejas Phaterpekar"
+date: "22/01/2020"
+always_allow_html: true
+output: 
+  html_document:
+    toc: true
+#bibliography: asd_ref.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(tidyverse)
+library(caret)
+```
+
+# Summary
+
+# Introduction
+
+# Methods
+
+## Data
+
+## Analysis
+
+# Results & Discussion
+
+# References
+
+
