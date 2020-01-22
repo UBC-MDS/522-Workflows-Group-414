@@ -6,7 +6,7 @@ always_allow_html: true
 output: 
   html_document:
     toc: true
-#bibliography: asd_ref.bib
+bibliography: asd_refs.bib
 ---
 
 ```{r setup, include=FALSE}
