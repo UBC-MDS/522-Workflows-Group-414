@@ -31,6 +31,7 @@ def main(adult_path):
     autism_df = autism_df.replace("?", np.nan)
     autism_df = autism_df.replace("[Oo]thers", np.nan, regex = True)
     autism_df = autism_df.dropna(axis = 0)
+    autism_df = autism_df.query("age < 120")
 
     # split the data (used random state for reproducibility)
     X_train, X_test, y_train, y_test = train_test_split(autism_df.drop(columns = ['austim']), autism_df['austim'], test_size = 0.2, random_state = 55)
@@ -88,7 +89,7 @@ def clean_feature_data(feature_df):
     feature_df['country_of_res'] = feature_df['country_of_res'].replace("Viet Nam", "Vietnam")
 
     # Removing age outlier
-    feature_df = feature_df.query("age < 120")
+ 
 
     return feature_df
 
