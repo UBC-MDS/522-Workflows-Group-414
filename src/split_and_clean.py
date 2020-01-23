@@ -3,12 +3,10 @@
 '''This script concatenates 3 separate ASD dataframes, relating to children, adolescents and adults. 
 It then splits the data into training and test sets, before proceeding to clean missing values and erroneous column/values.
 
-Usage: split_and_clean.py --child_path=<child_path> --adol_path=<adol_path> --adult_path=<adult_path> 
+Usage: split_and_clean.py --adult_path=<adult_path> 
 
 
 Options: 
---child_path=<child_path>   :   Relative file path for the child_autism csv
---adol_path=<adol_path>     :   Relative file path for the adolescent autism csv
 --adult_path=<adult_path>   :   Relative file path for the adult_autism csv
 
 '''
@@ -25,17 +23,9 @@ from scipy.io import arff
 opt = docopt(__doc__)
 
 # define main function
-def main(child_path, adol_path, adult_path):
+def main(adult_path):
     print("working")
-    adult_df = pd.read_csv(adult_path)
-   # adult_df = pd.DataFrame(adult_df[0], dtype='str')
-
-    adol_df = pd.read_csv(adol_path)
-    #adol_df = pd.DataFrame(adol_df[0], dtype='str')
-
-    child_df = pd.read_csv(child_path)
-
-    autism_df = pd.concat([child_df, adol_df, adult_df], ignore_index=True)
+    autism_df = pd.read_csv(adult_path)
 
     # Introduce nan values for any nonsense values; then remove any rows containing these
     autism_df = autism_df.replace("?", np.nan)
@@ -97,6 +87,9 @@ def clean_feature_data(feature_df):
     feature_df['country_of_res'] = feature_df['country_of_res'].str.replace("'","")
     feature_df['country_of_res'] = feature_df['country_of_res'].replace("Viet Nam", "Vietnam")
 
+    # Removing age outlier
+    feature_df = feature_df.query("age < 120")
+
     return feature_df
 
 def clean_target_data(target_df):
@@ -108,4 +101,4 @@ def clean_target_data(target_df):
 
 # call main function
 if __name__ == "__main__":
-    main(opt["--child_path"], opt["--adol_path"], opt["--adult_path"])
+    main(opt["--adult_path"])
