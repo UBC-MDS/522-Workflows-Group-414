@@ -106,9 +106,15 @@ A final report will be written in markdown to summarize the problem, question, a
 To replicate this analysis, clone this github repository, install the necessary dependencies, and type the following into your terminal:
 
 ```
+#download data
 python src/download.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/00419/Autism-Screening-Child-Data%20Plus%20Description.zip --zip_folder=data/autism_screening.zip --data_name=Autism-Child-Data
 
+# Split and Clean data
 python src/split_and_clean.py --adult_path=data/Autism-Adult-Data.csv
+
+#run eda
+Rscript src/eda_vis.r --X_train_path=data/clean-data/Xtrain-clean-autism-screening.csv --y_train_path=data/clean-data/ytrain-clean-autism-screening.csv
+
 ```
 
 ## Dependencies (in progress; will be added to in week 2):
