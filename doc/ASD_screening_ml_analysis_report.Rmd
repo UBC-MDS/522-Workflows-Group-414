@@ -13,26 +13,72 @@ bibliography: asd_refs.bib
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 library(tidyverse)
-library(caret)
 ```
 
 # Summary
 
-## Introduction
+Here we trained ____ models and discovered etc...
 
-Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey [@pmid22265366]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
+# Introduction
 
-The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
+Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey [@allison2012toward]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
 
-Surveys are useful screening tools, but there is always a concern that they can often be answered in a subjective manner. Therefore, we sought to understand how effective are these surveys in predicting an autism diagnosis, and which survey questions are the most effective predictors. Additionally, are these survey questions more useful in our models, compared to an individual's background (age, gender, ethnicity)?
+The Autism Spectrum Quotient-10<sup>3</sup> ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
+
+Using this metric, the ASD app has the following performance.
+
+(Insert Confusion Matrix)
+
+Currently, all 10 prompts have equal importance in the app's classification process. Our project aims to explore which survey questions are the most effective predictors. Could those be weighted more heavily in future ASD predictions? Additionally, are these survey questions more useful in our models, compared to an individual's background (age, gender, ethnicity)?
 
 # Methods
-# Results & Discussion
 
-# Limitations
+## Data
 
-- could not get access directly to AQ-10 surveys for children and adolescents. We made an assumption that they follow the same metric as the adult AQ-10.
-- Implications of removing the ?/others rows.
+The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the indvidual was recorded.
+
+| Variable             | Type             | Description                                                                                                                            |
+|----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| A1_score             | Int (0,1)        | Prompt: I often notice small sounds when others do not                                                                                 |
+| A2_score             | Int (0,1)        | Prompt: I usually concentrate more on the whole picture, rather than the small details                                                 |
+| A3_score             | Int (0,1)        | Prompt: I find it easy to do more than one thing at once                                                                               |
+| A4_score             | Int (0,1)        | Prompt: If there is an interruption, I can switch back to what I was doing very quickly                                                |
+| A5_score             | Int (0,1)        | Prompt: I find it easy to 'read between the lines' when someone is talking to me                                                       |
+| A6_score             | Int (0,1)        | Prompt: I know how to tell if someone listening to me is getting bored                                                                 |
+| A7_score             | Int (0,1)        | Prompt: When I'm reading a story I find it difficult to work out the characters' intentions                                            |
+| A8_score             | Int (0,1)        | Prompt: I like to collect information about categories of things(e.g. types of car, types of bird, types of train, types of plant etc) |
+| A9_score             | Int (0,1)        | Prompt: I find it easy to work out what someone is thinking or feeling just by looking at their face                                   |
+| A10_score            | Int (0,1)        | Prompt: I find it difficult to work out people's intentions                                                                            |
+| Age                  | Int              | Age of the individual                                                                                                                  |
+| Gender               | String           | M (male) or F (female)                                                                                                                 |
+| Ethnicity            | String           | Common Ethnicities defined for each individual                                                                                         |
+| Born with Jaundice?  | String (yes,no)  | Was individual born with jaundice?                                                                                                     |
+| Country of Residence | String           | Home country of individual                                                                                                             |
+| Used app before?     | String (yes, no) | Has the user has used a screening app                                                                                                  |
+| Result               | Int              | Cumulative score of the 10 survey Q's                                                                                                  |
+| age_desc             | String           | Age Group                                                                                                                              |
+| relation             | String           | Parent, self, caregiver, medical staff, clinician ,etc.                                                                                |
+| ASD/Class            | String (yes, no) | App's classification based on result                                                                                                   |
+| autism (Target Variable)  | String (yes, no) | Does individual have an autism diagnosis?  
+
+## Analysis
+
+The following ___ models were used. We dropped the following ___ variables before fitting our models. GridSearchCV was used to optimize parameters (maybe use the markdown variables to report any hyperparameters)
+
+The following programming were used for this project: Python[@Python] and R[@R]. The following R packages were used: tidyverse[@tidyverse],knitr[@knitr], and reshape2. The following Python packages were used:docopt, zipfile, pandas, urllib, requests, sklearn, numpy, scipy.
+
+#  Results & Discussion
+
+1. Start with commenting about exploratory plots (insert Thomas' EDA plots)
+
+2. Talk about the results of ML (perhaps a table of performance, or another visual if we are feeling creative)
+
+# Limitations/Assumptions
+
+There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could had a potential influence on our model.  
+
+Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
+
 
 # References
 

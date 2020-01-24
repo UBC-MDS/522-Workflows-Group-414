@@ -138,6 +138,6 @@ Versions will be added when we integreate docker into our project.
 
 3. [Autism Spectrum Quotient-10 Survey (AQ-10)](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493).
 
-4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++).
+4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult).
 
 5. Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.” University of California, Irvine, School of Information; Computer Sciences.[http://archive.ics.uci.edu/ml/index.php](http://archive.ics.uci.edu/ml).
