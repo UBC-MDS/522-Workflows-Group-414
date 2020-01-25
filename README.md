@@ -120,24 +120,27 @@ python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.c
 
 ```
 
-## Dependencies (in progress; will be added to in week 2):
+## Dependencies:
 
 Versions will be added when we integreate docker into our project.
 
 **R packages**:
-- tidyverse==
-- reshape2==
+- tidyverse==1.2.1 
+- reshape2==1.4.3
+- docopt==0.6.1
+- caret==6.0.84
+- testthat==2.2.1
 
 **Python packages**:
-- docopt==
-- zipfile==
-- pandas==
-- urllib==
-- requests==
-- sklearn==
-- numpy==
-- scipy==
-
+- docopt==0.6.2
+- zipfile==3.2
+- pandas==0.25.3
+- urllib==0.21.5
+- requests==2.22.0
+- sklearn==0.22.1
+- numpy==1.17.4
+- scipy==1.3.1
+- altair==3.2.0
 
 ## References: 
 
