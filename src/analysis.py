@@ -13,8 +13,7 @@ Options:
 """
 
 ### In the terminal, in your root directory for the project, type:
-### python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening --test_X=data/clean-data/Xtest-clean-autism-screening --train_y=data/clean-data/ytrain-clean-autism-screening --test_y=data/clean-data/ytest-clean-autism-screening
-
+### python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.csv --test_X=data/clean-data/Xtest-clean-autism-screening.csv --train_y=data/clean-data/ytrain-clean-autism-screening.csv --test_y=data/clean-data/ytest-clean-autism-screening.csv --conf1=data/conf1 --conf2=data/conf2 --roc_path=img/ROC.png
 
 from docopt import docopt
 import pandas as pd
@@ -44,19 +43,28 @@ from sklearn.feature_selection import RFE
 # Plotting
 import altair as alt
 
+# Suppress warnings
+import warnings
+from sklearn.exceptions import FitFailedWarning
+
 opt = docopt(__doc__) 
 
 def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
 
+    np.random.RandomState(414)
+
+    warnings.filterwarnings(action='ignore', category=FitFailedWarning)
+
+    
     X_train = pd.read_csv(train_X, index_col=0)
     y_train = pd.read_csv(train_y, index_col=0)
     X_test = pd.read_csv(test_X, index_col=0)
     y_test = pd.read_csv(test_y, index_col=0)
 
-    y_train = X_train['autism']
-    X_train = X_train.drop(columns=['autism'])
-    y_test = X_test['autism']
-    X_test = X_test.drop(columns=['autism'])
+    # y_train = X_train['autism']
+    # X_train = X_train.drop(columns=['autism'])
+    # y_test = X_test['autism']
+    # X_test = X_test.drop(columns=['autism'])
 
 
     # Make validation set 
@@ -161,10 +169,10 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
     best_parameters[np.argmax(best_precision_scores)]
 
 
-    # the best precision score comes from a decision tree classifier with max_depth=15 and max_features=100
+    # the best precision score comes from a decision tree classifier with max_depth=15 and max_features=50
     # and precision = 0.46
 
-    dt = DecisionTreeClassifier(max_depth=15, max_features=100)
+    dt = DecisionTreeClassifier(max_depth=15, max_features=50)
     dt.fit(X_train, y_train).score(X_train, y_train)
 
 
