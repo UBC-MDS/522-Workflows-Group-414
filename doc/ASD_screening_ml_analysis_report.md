@@ -807,12 +807,16 @@ addressing questions that focused on solely on adults.
 
 # Code Attributions
 
-The following programming languages were used for this project:
-Python(Van Rossum and Drake 2009) and R(R Core Team 2019). The following
-R packages were used: tidyverse(Wickham 2017),knitr(Xie 2014),
-reshape2(Wickham 2007), docopt(de Jonge 2018), and caret(Kuhn 2009). The
-following Python packages were used:docopt(Keleshev 2014), zipfile,
-pandas, urllib, requests, sklearn, numpy, scipy, and altair.
+The following programming languages were used for this project: Python
+(Van Rossum and Drake 2009) and R (R Core Team 2019). The following R
+packages were used: tidyverse (Wickham 2017), knitr (Xie 2014), reshape2
+(Wickham 2007), docopt (de Jonge 2018), caret (Kuhn 2009), testthat
+(Wickham 2011) and kableExtra (Zhu 2019). The following Python packages
+were used:docopt(Keleshev 2014), zipfile (Van Rossum and Drake 2009),
+pandas (McKinney 2010), urllib (Van Rossum and Drake 2009), requests
+(Chandra and Varanasi 2015), sklearn (Pedregosa et al. 2011), numpy
+(Oliphant, n.d.), scipy (Virtanen et al. 2019), and altair (VanderPlas
+et al. 2018).
 
 # References
 
@@ -825,6 +829,13 @@ Brief ‘Red Flags’ for Autism Screening: The Short Autism Spectrum
 Quotient and the Short Quantitative Checklist in 1,000 Cases and 3,000
 Controls.” *Journal of the American Academy of Child & Adolescent
 Psychiatry* 51 (2). Elsevier: 202–12.
+
+</div>
+
+<div id="ref-10.5555/2842840">
+
+Chandra, Rakesh Vidya, and Bala Subrahmanyam Varanasi. 2015. *Python
+Requests Essentials*. Packt Publishing.
 
 </div>
 
@@ -848,6 +859,29 @@ Kuhn, Max. 2009. “The Caret Package.”
 
 </div>
 
+<div id="ref-mckinney-proc-scipy-2010">
+
+McKinney, Wes. 2010. “Data Structures for Statistical Computing in
+Python.” In *Proceedings of the 9th Python in Science Conference*,
+edited by Stéfan van der Walt and Jarrod Millman, 51–56.
+
+</div>
+
+<div id="ref-numpy">
+
+Oliphant, Travis. n.d. “NumPy: A Guide to NumPy.” USA: Trelgol
+Publishing. <http://www.numpy.org/>.
+
+</div>
+
+<div id="ref-scikit-learn">
+
+Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O.
+Grisel, M. Blondel, et al. 2011. “Scikit-Learn: Machine Learning in
+Python.” *Journal of Machine Learning Research* 12: 2825–30.
+
+</div>
+
 <div id="ref-R">
 
 R Core Team. 2019. *R: A Language and Environment for Statistical
@@ -865,10 +899,29 @@ Informatics Journal* 25 (4): 1739–55.
 
 </div>
 
+<div id="ref-Altair2018">
+
+VanderPlas, Jacob, Brian Granger, Jeffrey Heer, Dominik Moritz, Kanit
+Wongsuphasawat, Eitan Lees, Ilia Timofeev, Ben Welsh, and Scott Sievert.
+2018. “Altair: Interactive Statistical Visualizations for Python.”
+*Journal of Open Source Software*, December. The Open Journal.
+<https://doi.org/10.21105/joss.01057>.
+
+</div>
+
 <div id="ref-Python">
 
 Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
 Scotts Valley, CA: CreateSpace.
+
+</div>
+
+<div id="ref-2019arXiv190710121V">
+
+Virtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler
+Reddy, David Cournapeau, Evgeni Burovski, et al. 2019. “SciPy
+1.0–Fundamental Algorithms for Scientific Computing in Python.” *arXiv
+E-Prints*, July, arXiv:1907.10121.
 
 </div>
 
@@ -877,6 +930,14 @@ Scotts Valley, CA: CreateSpace.
 Wickham, Hadley. 2007. “Reshaping Data with the reshape Package.”
 *Journal of Statistical Software* 21 (12): 1–20.
 <http://www.jstatsoft.org/v21/i12/>.
+
+</div>
+
+<div id="ref-testthat">
+
+———. 2011. “Testthat: Get Started with Testing.” *The R Journal* 3:
+5–10.
+<https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf>.
 
 </div>
 
@@ -893,6 +954,13 @@ Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research
 in R.” In *Implementing Reproducible Computational Research*, edited by
 Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman;
 Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
+
+</div>
+
+<div id="ref-kableEx">
+
+Zhu, Hao. 2019. *KableExtra: Construct Complex Table with ’Kable’ and
+Pipe Syntax*. <https://CRAN.R-project.org/package=kableExtra>.
 
 </div>
 

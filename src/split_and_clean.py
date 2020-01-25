@@ -1,6 +1,9 @@
-# authors: Tejas Phaterpekar, Matthew Connell, Thomas Pin
+# authors: Tejas Phaterpekar
+# Date written: 01-25-2020
+# This script takes in the ASD adults dataset.It then splits the data into training and test sets, 
+# before proceeding to clean missing values and erroneous column/values.
 
-'''This script concatenates 3 separate ASD dataframes, relating to children, adolescents and adults. 
+'''This script takes in the ASD adults dataset. 
 It then splits the data into training and test sets, before proceeding to clean missing values and erroneous column/values.
 
 Usage: split_and_clean.py --adult_path=<adult_path> 
@@ -31,6 +34,8 @@ def main(adult_path):
     autism_df = autism_df.replace("?", np.nan)
     autism_df = autism_df.replace("[Oo]thers", np.nan, regex = True)
     autism_df = autism_df.dropna(axis = 0)
+
+    # we filter out the 1 row that has an extreme age value of 380
     autism_df = autism_df.query("age < 120")
 
     # split the data (used random state for reproducibility)
@@ -42,6 +47,8 @@ def main(adult_path):
     y_train = clean_target_data(pd.DataFrame(y_train))
     y_test = clean_target_data(pd.DataFrame(y_test))
 
+    check_compatability(X_train, y_train)
+    check_compatability(X_test, y_test)
 
     X_train.to_csv("data/clean-data/Xtrain-clean-autism-screening.csv", index = True)
     y_train.to_csv("data/clean-data/ytrain-clean-autism-screening.csv", index = True, header = True)
@@ -52,6 +59,15 @@ def main(adult_path):
 
 # code for other functions & tests goes here
 def clean_feature_data(feature_df):
+    '''
+    Takes in a feature df and cleans column names, value types, and corrects erroenous values
+
+    Arguments:
+
+    feature_df - (DataFrame) Feature dataframe
+
+    Returns Cleaned Dataframe
+    '''
 
     # Clean up column names
     feature_df.rename(columns = {'jundice':'jaundice', 'austim': 'autism', 'contry_of_res':"country_of_res"}, inplace = True)
@@ -94,12 +110,37 @@ def clean_feature_data(feature_df):
     return feature_df
 
 def clean_target_data(target_df):
+    '''
+    Takes in a target df and cleans column names, value types, and corrects erroenous values
+
+    Arguments:
+
+    target_df - (DataFrame) Target dataframe
+
+    Returns Cleaned Dataframe
+    '''
 
     # Clean up column names
     target_df.rename(columns = {'austim': 'autism'}, inplace = True)
 
     return target_df
 
+def check_compatability(feature_df, target_df):
+    '''
+    Takes in X and y dataframes and makes sure their shape is compatible
+
+    Arguments:
+
+    feature_df - (DataFrame) Feature dataframe
+    target_df - (DataFrame) Target dataframe
+
+    Returns an error if incompatible
+
+    '''
+
+    assert feature_df.shape[0] == target_df.shape[0], "X and y shapes don't match!"
+    return
+    
 # call main function
 if __name__ == "__main__":
     main(opt["--adult_path"])
