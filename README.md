@@ -125,8 +125,11 @@ python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.c
 Versions will be added when we integreate docker into our project.
 
 **R packages**:
-- tidyverse==
-- reshape2==
+- tidyverse==1.2.1 
+- reshape2==1.4.3
+- docopt==0.6.1
+- caret==6.0.84
+- testthat==2.2.1
 
 **Python packages**:
 - docopt==
