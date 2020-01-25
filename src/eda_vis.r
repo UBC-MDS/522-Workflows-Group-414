@@ -3,6 +3,7 @@ library(tidyverse)
 library(reshape2)
 library(docopt)
 library(caret)
+library(testthat)
 theme_set(theme_bw())
 
 "Creates eda plots for the pre-processed training data from the Wisconsin breast cancer data (from http://mlr.cs.umass.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data).
@@ -67,7 +68,24 @@ draw_confusion_matrix <- function(cm) {
 }  
 
 
+#' Makes the three EDA plots
+#'
+#' @param X_train_path 
+#' @param y_train_path 
+#'
+#' @export 
+#' img/01_corr_heatmap.png
+#' img/02_confusion_matrix.png
+#' img/03_prop_result.png
+#' 
 main <- function(X_train_path, y_train_path) {
+  
+  test_that("The X_train_path and y_train_path is correct", {
+    expect_equivalent(X_train_path, "data/clean-data/Xtrain-clean-autism-screening.csv")
+    expect_equivalent(y_train_path, "data/clean-data/ytrain-clean-autism-screening.csv")
+    
+  })
+
   #read files
   df_autism_X <- read_csv(X_train_path)
   df_autism_y <- read_csv(y_train_path)

@@ -810,13 +810,13 @@ addressing questions that focused on solely on adults.
 The following programming languages were used for this project: Python
 (Van Rossum and Drake 2009) and R (R Core Team 2019). The following R
 packages were used: tidyverse (Wickham 2017), knitr (Xie 2014), reshape2
-(Wickham 2007), docopt (de Jonge 2018), caret (Kuhn 2009), and
-kableExtra (Zhu 2019). The following Python packages were
-used:docopt(Keleshev 2014), zipfile (Van Rossum and Drake 2009), pandas
-(McKinney 2010), urllib (Van Rossum and Drake 2009), requests (Chandra
-and Varanasi 2015), sklearn (Pedregosa et al. 2011), numpy (Oliphant,
-n.d.), scipy (Virtanen et al. 2019), and altair (VanderPlas et al.
-2018).
+(Wickham 2007), docopt (de Jonge 2018), caret (Kuhn 2009), testthat
+(Wickham 2011) and kableExtra (Zhu 2019). The following Python packages
+were used:docopt(Keleshev 2014), zipfile (Van Rossum and Drake 2009),
+pandas (McKinney 2010), urllib (Van Rossum and Drake 2009), requests
+(Chandra and Varanasi 2015), sklearn (Pedregosa et al. 2011), numpy
+(Oliphant, n.d.), scipy (Virtanen et al. 2019), and altair (VanderPlas
+et al. 2018).
 
 # References
 
@@ -930,6 +930,14 @@ E-Prints*, July, arXiv:1907.10121.
 Wickham, Hadley. 2007. “Reshaping Data with the reshape Package.”
 *Journal of Statistical Software* 21 (12): 1–20.
 <http://www.jstatsoft.org/v21/i12/>.
+
+</div>
+
+<div id="ref-testthat">
+
+———. 2011. “Testthat: Get Started with Testing.” *The R Journal* 3:
+5–10.
+<https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf>.
 
 </div>
 
