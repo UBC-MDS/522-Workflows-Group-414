@@ -140,7 +140,7 @@ Versions will be added when we integreate docker into our project.
 - sklearn==0.22.1
 - numpy==1.17.4
 - scipy==1.3.1
-
+- altair==3.2.0
 
 ## References: 
 
