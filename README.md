@@ -8,31 +8,31 @@ Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that im
 
 
 
-The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in children aged 4-11. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 7, 8, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 5, 6, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
+The Autism Spectrum Quotient-10<sup>3</sup> (AQ-10) consists of 10 questions intended to differentiate characteristics of autism in adults. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 7, 8, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 5, 6, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
 
-The dataset contains survey results and background information for 292 children between the ages of 4-11 years. The [data<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++) was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>.
+The dataset contains survey results and background information for 704 adults. The [data<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult) was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>.
 
 ### Variable Definitions
 
-1. **A1_score** (Int; 0, 1) Prompt: S/he often notices small sounds when others do not
+1. **A1_score** (Int; 0, 1) Prompt: I often notice small sounds when others do not
 
-2. **A2_score** (Int; 0, 1) Prompt: S/he usually concentrates more on the whole picture, rather than the small details
+2. **A2_score** (Int; 0, 1) Prompt: I usually concentrate more on the whole picture, rather than the small details
 
-3. **A3_score** (Int; 0, 1) Prompt: In a social group, s/he can easily keep track of several different people’s conversations
+3. **A3_score** (Int; 0, 1) Prompt: I find it easy to do more than one thing at once
 
-4. **A4_score** (Int; 0, 1) Prompt: S/he finds it easy to go back and forth between different activities
+4. **A4_score** (Int; 0, 1) Prompt: If there is an interruption, I can switch back to what I was doing very quickly
 
-5. **A5_score** (Int; 0, 1) Prompt: S/he doesn’t know how to keep a conversation going with his/her peers
+5. **A5_score** (Int; 0, 1) Prompt: I find it easy to 'read between the lines' when someone is talking to me
 
-6. **A6_score** (Int; 0, 1) Prompt: S/he is good at social chit-chat
+6. **A6_score** (Int; 0, 1) Prompt: I know how to tell if someone listening to me is getting bored
 
-7. **A7_score** (Int; 0, 1) Prompt: When s/he is read a story, s/he finds it difficult to work out the character’s intentions or feelings
+7. **A7_score** (Int; 0, 1) Prompt: When I'm reading a story I find it difficult to work out the characters' intentions
 
-8. **A8_score** (Int; 0, 1) Prompt: When s/he was in preschool, s/he used to enjoy playing games involving pretending with other children
+8. **A8_score** (Int; 0, 1) Prompt: I like to collect information about categories of things(e.g. types of car, types of bird, types of train, types of plant etc)
 
-9. **A9_score** (Int; 0, 1) Prompt: S/he finds it easy to work out what someone is thinking or feeling just by looking at their face
+9. **A9_score** (Int; 0, 1) Prompt: I find it easy to work out what someone is thinking or feeling just by looking at their face
 
-10. **A10_score** (Int; 0, 1) Prompt: S/he finds it hard to make new friends
+10. **A10_score** (Int; 0, 1) Prompt: I find it difficult to work out people's intentions
 
 11. **Age** - (int) Age in years
 
@@ -63,8 +63,6 @@ The dataset contains survey results and background information for 292 children 
 *Sub-Questions:*
 
 - Does predictor importance change if we separate the data based on gender? (predictive)
-
-- If a parent takes the test for their child, are there more incorrect ASD classifications/miss-classifications? (Descriptive)
 
 - Do AQ-score features matter more than background features (sex, ethnicity, relation) when classifying for ASD? (predictive)
 
@@ -111,6 +109,9 @@ To replicate this analysis, clone this github repository, install the necessary 
 #download data
 python src/download.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/00419/Autism-Screening-Child-Data%20Plus%20Description.zip --zip_folder=data/autism_screening.zip --data_name=Autism-Child-Data
 
+# Split and Clean data
+python src/split_and_clean.py --adult_path=data/Autism-Adult-Data.csv
+
 #run eda
 Rscript src/eda_vis.r --X_train_path=data/clean-data/Xtrain-clean-autism-screening.csv --y_train_path=data/clean-data/ytrain-clean-autism-screening.csv
 
@@ -143,6 +144,6 @@ Versions will be added when we integreate docker into our project.
 
 3. [Autism Spectrum Quotient-10 Survey (AQ-10)](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493).
 
-4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autistic+Spectrum+Disorder+Screening+Data+for+Children++).
+4. [UCI Dataset Respository](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult).
 
 5. Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.” University of California, Irvine, School of Information; Computer Sciences.[http://archive.ics.uci.edu/ml/index.php](http://archive.ics.uci.edu/ml).
