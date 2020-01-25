@@ -139,6 +139,8 @@ ROC curve:
 
 ![](../img/ROC.png)
 
+In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization. 
+
 ### Code attribution
 
 The following programming were used for this project: Python (Van Rossum
