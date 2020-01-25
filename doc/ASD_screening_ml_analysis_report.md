@@ -5,7 +5,11 @@ Matthew Connell, Thomas Pin and Tejas Phaterpekar
 
 # Summary
 
-Here we trained \_\_\_\_ models and discovered etc…
+Here we trained several machine learning models from the `sklearn` package in the Python programming language in attempt to find a model that would better and more quickly diagnose autism in adults. We used survey data from the UCI Machine Learning Datasets repository.
+
+The survey data we used consisted of ten questions in addition to other information about the respondent, such as age and country of residence. We looked into whether there were questions that could be disregarded from the survey without having a negative impact on the accuracy of diagnosis.
+
+We eventually chose a Decision Tree Classifier as our model. However, even though we had decent results on training and validation data, our model was poor at predicting outcomes on our test data. 
 
 # Introduction
 
