@@ -115,6 +115,9 @@ python src/split_and_clean.py --adult_path=data/Autism-Adult-Data.csv
 #run eda
 Rscript src/eda_vis.r --X_train_path=data/clean-data/Xtrain-clean-autism-screening.csv --y_train_path=data/clean-data/ytrain-clean-autism-screening.csv
 
+# Machine learning analysis
+python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.csv --test_X=data/clean-data/Xtest-clean-autism-screening.csv --train_y=data/clean-data/ytrain-clean-autism-screening.csv --test_y=data/clean-data/ytest-clean-autism-screening.csv --conf1=data/conf1 --conf2=data/conf2 --roc_path=img/ROC.png
+
 ```
 
 ## Dependencies (in progress; will be added to in week 2):
