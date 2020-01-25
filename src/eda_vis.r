@@ -68,6 +68,16 @@ draw_confusion_matrix <- function(cm) {
 }  
 
 
+#' Makes the three EDA plots
+#'
+#' @param X_train_path 
+#' @param y_train_path 
+#'
+#' @export 
+#' img/01_corr_heatmap.png
+#' img/02_confusion_matrix.png
+#' img/03_prop_result.png
+#' 
 main <- function(X_train_path, y_train_path) {
   
   test_that("The X_train_path and y_train_path is correct", {
