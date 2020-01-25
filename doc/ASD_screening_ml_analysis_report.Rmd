@@ -52,7 +52,10 @@ background (age, gender, ethnicity)?
 
 The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the indvidual was recorded.
 
-| Variable             | Type             | Description                                                                                                                            |
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(kableExtra)
+object <- {
+  "| Variable             | Type             | Description                                                                                                                            |
 |----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | A1_score             | Int (0,1)        | Prompt: I often notice small sounds when others do not                                                                                 |
 | A2_score             | Int (0,1)        | Prompt: I usually concentrate more on the whole picture, rather than the small details                                                 |
@@ -75,7 +78,12 @@ The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screeni
 | relation             | String           | Parent, self, caregiver, medical staff, clinician ,etc.                                                                                |
 | ASD/Class            | String (yes, no) | App's classification based on result                                                                                                   |
 | autism (Target Variable)  | String (yes, no) | Does individual have an autism diagnosis?  
-
+"
+}
+data_frame <- read_delim(object, delim = '|')
+data_frame <- data_frame %>% select(-X5, -X1) %>% slice(-1)
+knitr::kable(data_frame) %>% kable_styling(bootstrap_options = "condensed", full_width = F, fixed_thead = TRUE)
+```
 
 
 
