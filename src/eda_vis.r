@@ -28,14 +28,14 @@ draw_confusion_matrix <- function(cm) {
   title('CONFUSION MATRIX', cex.main=2)
   
   # create the matrix 
-  rect(150, 430, 240, 370, col='#3F97D0')
+  rect(150, 430, 240, 370, col='#1A64A7')
   text(195, 435, 'ASD Diagnosed', cex=1.2)
-  rect(250, 430, 340, 370, col='#F7AD50')
+  rect(250, 430, 340, 370, col='#91C4DE')
   text(295, 435, 'ASD-10 Result', cex=1.2)
   text(125, 370, 'Predicted', cex=1.3, srt=90, font=2)
   text(245, 450, 'Actual', cex=1.3, font=2)
-  rect(150, 305, 240, 365, col='#F7AD50')
-  rect(250, 305, 340, 365, col='#3F97D0')
+  rect(150, 305, 240, 365, col='#91C4DE')
+  rect(250, 305, 340, 365, col='#1A64A7')
   text(140, 400, 'ASD Diagnosed', cex=1.2, srt=90)
   text(140, 335, 'ASD-10 Result', cex=1.2, srt=90)
   
@@ -95,13 +95,14 @@ main <- function(X_train_path, y_train_path) {
     ggplot(aes(x=Var1, y=Var2, fill = value))+
     geom_tile()+
     ggtitle("Correlation Heatmap")+
-    xlab("Predictor")+
-    ylab("Predictor")+
-    labs(fill = "CORR")
+    labs(fill = "Correlation")+
+    theme(axis.title.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          axis.title.y=element_blank(),
+          axis.ticks.y=element_blank())
   
-  corr_heatmap
   
-  ggsave("img/01_corr_heatmap.png", width = 8, height = 5)
+  ggsave(plot = corr_heatmap, "img/01_corr_heatmap.png", width = 8, height = 5)
   
   #plot 2 confusion matrix 
   numLlvs <- 2
@@ -116,7 +117,11 @@ main <- function(X_train_path, y_train_path) {
   df_autism  %>% 
     ggplot()+
     geom_bar(mapping = aes(x=as.factor(result), fill = autism),
-             position = "fill")
+             position = "fill")+
+    ylab("Proportion of Participants")+
+    xlab("ASD-10 Test Score")+
+    ggtitle("Proportion of Participants by ASD-10 Test Score")+
+    scale_fill_brewer(name = "Diagnosed \nwith Autism", palette = "Paired")
   
   ggsave("img/03_prop_result.png", width = 7, height = 5)
   
