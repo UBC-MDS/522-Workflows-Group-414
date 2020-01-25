@@ -25,19 +25,14 @@ We eventually chose a Decision Tree Classifier as our model. However, even thoug
 
 # Introduction
 
-## Introduction
-
 Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey [@allison2012toward]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
 
 The Autism Spectrum Quotient-10<sup>3</sup> ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
 
 Using this metric, the ASD app has the following performance.
 
-<<<<<<< HEAD
-```{r plot 2, echo=FALSE, fig.cap="Figure 2. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
-=======
-```{r plot 2, echo=FALSE, fig.cap="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
->>>>>>> upstream/master
+```{r plot 1, echo=FALSE, fig.cap="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
+
 knitr::include_graphics("../img/02_confusion_matrix.png")
 ```
 
@@ -84,7 +79,7 @@ The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screeni
 
 
 
-```{r plot 1, echo=FALSE, fig.cap="Figure 1. Correlation heatmap of between questions on the ASD_10"}
+```{r plot 2, echo=FALSE, fig.cap="Figure 1. Correlation heatmap of between questions on the ASD_10"}
 knitr::include_graphics("../img/01_corr_heatmap.png")
 ```
 
@@ -101,6 +96,23 @@ Figure above depicts the proportion of true diagnosis and their score out of ten
 ## Analysis
 
 The following programming languages were used for this project: Python[@Python] and R[@R]. The following R packages were used: tidyverse[@tidyverse],knitr[@knitr], and reshape2. The following Python packages were used: docopt, zipfile, pandas, urllib, requests, sklearn, numpy, scipy. GridSearchCV was used to optimize parameters (maybe use the markdown variables to report any hyperparameters)
+
+To start, we explored the correlational relationships between the different AQ-10 survey questions.
+
+```{r plot 4, echo=FALSE, fig.cap="Figure 2. Correlation heatmap of between questions on the ASD_10"}
+knitr::include_graphics("../img/01_corr_heatmap.png")
+```
+
+In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results. 
+
+Next, we explored how the result, the cumulative score of the survey, related to autism diagnosis.
+
+```{r plot 5, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
+knitr::include_graphics("../img/03_prop_result.png")
+```
+
+
+The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 are associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, the survey does show some effectiveness in classifying autism, but it isn't perfect. 
 
 
 ### Choosing a model
@@ -133,6 +145,12 @@ Similarly, choosing all the questions as features and no other features yielded 
 
 ![](../img/ten-questions-classification-report.png)
 
+
+
+#  Results & Discussion
+
+1. Start with commenting about exploratory plots (insert Thomas' EDA plots)
+
 ### Final Results
 
 After selecting a model with grid search cross-validation and deciding to use all the features of the dataset, we used our Decision Tree model to predict results on our test set. Unfortunately, the recall score was far below that of our validation set. 
@@ -149,18 +167,13 @@ ROC curve:
 
 In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization.
 
-#  Results & Discussion
-
-1. Start with commenting about exploratory plots (insert Thomas' EDA plots)
-
-<<<<<<< HEAD
-2. Talk about the results of ML (perhaps a table of performance, or another visual if we are feeling creative)
-
 # Limitations/Assumptions
 
 There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could had a potential influence on our model.  
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
+
+
 
 
 # References
@@ -219,35 +232,3 @@ Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
 </div>
 
 </div>
-=======
-To start, we explored the correlational relationships between the different AQ-10 survey questions.
-
-```{r plot 1, echo=FALSE, fig.cap="Figure 2. Correlation heatmap of between questions on the ASD_10"}
-knitr::include_graphics("../img/01_corr_heatmap.png")
-```
-
-In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results. 
-
-Next, we explored how the result, the cumulative score of the survey, related to autism diagnosis.
-
-```{r plot 3, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
-knitr::include_graphics("../img/03_prop_result.png")
-```
-
-
-The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 are associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, the survey does show some effectiveness in classifying autism, but it isn't perfect. 
-
-2. Talk about the results of ML (perhaps a table of performance, or another visual if we are feeling creative)
-
-# Limitations/Assumptions
->>>>>>> upstream/master
-
-There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could had a potential influence on our model.  
-
-Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
-
-
-<<<<<<< HEAD
-=======
-# References
->>>>>>> upstream/master
