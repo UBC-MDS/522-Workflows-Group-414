@@ -120,7 +120,7 @@ python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.c
 
 ```
 
-## Dependencies (in progress; will be added to in week 2):
+## Dependencies:
 
 Versions will be added when we integreate docker into our project.
 
