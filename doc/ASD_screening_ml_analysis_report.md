@@ -1,6 +1,6 @@
 Autism Spectrum Disorder Screening Machine Learning Analysis
 ================
-Matthew Connel, Thomas Pin and Tejas Phaterpekar
+Matthew Connell, Thomas Pin and Tejas Phaterpekar
 22/01/2020
 
 # Summary
@@ -38,7 +38,7 @@ assessment.
 
 Using this metric, the ASD app has the following performance.
 
-(Insert Confusion Matrix)
+![](../img/roc.png)
 
 Currently, all 10 prompts have equal importance in the app’s
 classification process. Our project aims to explore which survey
@@ -90,6 +90,24 @@ The following \_\_\_ models were used. We dropped the following \_\_\_
 variables before fitting our models. GridSearchCV was used to optimize
 parameters (maybe use the markdown variables to report any
 hyperparameters)
+
+### Choosing a model
+
+For the analysis, the training data was split into a train set and a validation set. Using these sets of data, we conducted a grid search with cross validation over five different type of models (Logistic Regression, K-Nearest Neighbors, Random Forest Classifier, Decision Tree Classifier, and Support Vector Machine classification). We used `recall` as the scoring method as our goal was not to get the most accurate model, but to get the model that reduced the number of false negatives. Additionally, there was the issue of class imbalance as our dataset consisted mostly of people who were not diagnosed with Autism. Merely choosing accuracy as our goal would have made the model predict only negative outcomes. 
+
+### Improving the model
+
+One of the goals of this project was to find which questions on the survey would best predict the diagnosis of Autism and whether or not any of the questions from the survey could be dropped without reducing accuracy. This would help streamline the diagnosis process and save time for everyone. We were also curious if there were other features that were unnecessary, such as ethnicity or county of residence. 
+
+#### Forward Selection
+
+An attempt at choosing the best questions was made using the feature selection concept of `forward selection`, where a model chooses the feature that best predicts the validation set, and then the next best feature is chosen. However, it was determined that no one question was better than another at predicting the outcomes, so `forward selection` was not useful. 
+
+#### Recursive Feature Elimination
+
+We tried another method of feature selection called `recursive feature elimination`, which looks at all features and then eliminates the one that is the least helpful in predicting the target features. This is done until the desired number of features is selected. 
+
+### Code attribution
 
 The following programming were used for this project: Python(Van Rossum
 and Drake 2009) and R(R Core Team 2019). The following R packages were
