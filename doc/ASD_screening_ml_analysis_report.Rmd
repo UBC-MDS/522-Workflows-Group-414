@@ -172,7 +172,7 @@ Our original intention was to use survey data from children, adolescents, and ad
 
 # Code Attributions
 
-The following programming languages were used for this project: Python[@Python] and R[@R]. The following R packages were used: tidyverse[@tidyverse],knitr[@knitr], reshape2[@reshape2], docopt[@docopt], caret[@Kuhn09thecaret], and kableExtra. The following Python packages were used:docopt[@docoptpython], zipfile, pandas, urllib, requests, sklearn, numpy, scipy, and altair.
+The following programming languages were used for this project: Python [@Python] and R [@R]. The following R packages were used: tidyverse [@tidyverse], knitr [@knitr], reshape2 [@reshape2], docopt [@docopt], caret [@Kuhn09thecaret], and kableExtra [@kableEx]. The following Python packages were used:docopt[@docoptpython], zipfile [@Python], pandas [@mckinney-proc-scipy-2010], urllib [@Python], requests [@10.5555/2842840], sklearn [@scikit-learn], numpy [@numpy], scipy [@2019arXiv190710121V], and altair [@Altair2018].
 
 
 
