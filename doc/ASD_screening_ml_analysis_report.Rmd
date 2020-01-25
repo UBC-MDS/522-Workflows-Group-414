@@ -17,7 +17,7 @@ library(tidyverse)
 
 # Summary
 
-Here we trained several machine learning models from the `sklearn` package in the Python programming language in attempt to find a model that would better and more quickly diagnose autism in adults. We used survey data from the UCI Machine Learning Datasets repository.
+Here we trained several machine learning models from the `sklearn` package in the Python programming language in attempt to find a model that would better and more quickly diagnose autism in adults. We used survey data from the [UCI Machine Learning Datasets](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult) repository.
 
 The survey data we used consisted of ten questions in addition to other information about the respondent, such as age and country of residence. We looked into whether there were questions that could be disregarded from the survey without having a negative impact on the accuracy of diagnosis.
 
@@ -25,18 +25,18 @@ We eventually chose a Decision Tree Classifier as our model. However, even thoug
 
 # Introduction
 
-Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek formal healthcare opinions, based on a 10 question survey [@allison2012toward]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
+Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek professional healthcare opinions, based on a 10 question survey [@allison2012toward]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
 
-The Autism Spectrum Quotient-10<sup>3</sup> ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated for each individual, which is then used to recommend a healthcare opinion. An individual who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
+The Autism Spectrum Quotient-10 ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated and a participant who receives a total score of greater than 6 is recommendeded for a specialist diagnostic assessment.
 
-Using this metric, the ASD app has the following performance.
+Using this metric on the dataset, the ASDTest app has the following performance.
 
-```{r plot 1, echo=FALSE, fig.cap="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
+```{r plot 1, echo=FALSE, fig.cap="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results", out.width = "70%", out.height= "70%"}
 
 knitr::include_graphics("../img/02_confusion_matrix.png")
 ```
 
-Figure above depicts a confusion matrix of the true Diagnoses of ASD and the ASD-10 result. This confusion matrix will act as a baseline for how our model compares to the ASD-10 prediction.  The ASD-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a manageable false negative rate of 33 cases which is a positive sign because as a screening test they do not want to miss out on potential patients.  
+The confusion matrix in Figure 1 will act as a baseline for how our model compares to the AQ-10 predictions.  The AQ-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a high recall (0.895) with only 33 false negative cases. This is a positive sign because as a screening test they do not want to miss out on potential patients.  
 
 Currently, all 10 prompts have equal importance in the app’s
 classification process. Our project aims to explore which survey
@@ -50,9 +50,12 @@ background (age, gender, ethnicity)?
 
 ## Data
 
-The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository<sup>5</sup>, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the indvidual was recorded.
+The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the indvidual was recorded. Below is the entire variable set:
 
-| Variable             | Type             | Description                                                                                                                            |
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(kableExtra)
+object <- {
+  "| Variable             | Type             | Description                                                                                                                            |
 |----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | A1_score             | Int (0,1)        | Prompt: I often notice small sounds when others do not                                                                                 |
 | A2_score             | Int (0,1)        | Prompt: I usually concentrate more on the whole picture, rather than the small details                                                 |
@@ -75,44 +78,31 @@ The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screeni
 | relation             | String           | Parent, self, caregiver, medical staff, clinician ,etc.                                                                                |
 | ASD/Class            | String (yes, no) | App's classification based on result                                                                                                   |
 | autism (Target Variable)  | String (yes, no) | Does individual have an autism diagnosis?  
-
-
-
-
-```{r plot 2, echo=FALSE, fig.cap="Figure 1. Correlation heatmap of between questions on the ASD_10"}
-knitr::include_graphics("../img/01_corr_heatmap.png")
+"
+}
+data_frame <- read_delim(object, delim = '|')
+data_frame <- data_frame %>% select(-X5, -X1) %>% slice(-1)
+knitr::kable(data_frame) %>% kable_styling(bootstrap_options = "condensed", full_width = F, fixed_thead = TRUE)
 ```
-
-Figure above depicts the correlation between questions on ASD-10. None of the questions have a high correlation between each other and highest correlation is .6. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results.
-
-
-
-```{r plot 3, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
-knitr::include_graphics("../img/03_prop_result.png")
-```
-
-Figure above depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Currently, as their score is above six, which is the threshold for the ASD-10 diagnoses, the proportion of true diagnosis is increasing. Furthermore,  if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD.  
 
 ## Analysis
 
-The following programming languages were used for this project: Python[@Python] and R[@R]. The following R packages were used: tidyverse[@tidyverse],knitr[@knitr], and reshape2. The following Python packages were used: docopt, zipfile, pandas, urllib, requests, sklearn, numpy, scipy. GridSearchCV was used to optimize parameters (maybe use the markdown variables to report any hyperparameters)
-
 To start, we explored the correlational relationships between the different AQ-10 survey questions.
 
-```{r plot 4, echo=FALSE, fig.cap="Figure 2. Correlation heatmap of between questions on the ASD_10"}
+```{r plot 2, echo=FALSE, fig.cap="Figure 2. Correlation heatmap of between questions on the ASD_10", out.width = "70%", out.height= "70%"}
 knitr::include_graphics("../img/01_corr_heatmap.png")
 ```
 
 In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results. 
 
-Next, we explored how the result, the cumulative score of the survey, related to autism diagnosis.
+Next, we explored how the cumulative score of the survey(`result`) related to an autism diagnosis.
 
-```{r plot 5, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
+```{r plot 3, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10", out.width = "70%", out.height= "70%"}
 knitr::include_graphics("../img/03_prop_result.png")
 ```
 
 
-The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 are associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, the survey does show some effectiveness in classifying autism, but it isn't perfect. 
+The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
 
 
 ### Choosing a model
@@ -121,7 +111,9 @@ For the analysis, the training data was split into a train set and a validation 
 
 The model with the best recall was found to be a `Decision Tree Classifier` with parameters `max_depth` equal to 20 and `max_features` equal to 50. The classification report on the validation set for this model is below. The recall score is 0.38.
 
-![](../img/all-features-classification-report.png)
+```{r plot 4, echo=FALSE, fig.cap="Figure 4. Classification Report for a Decision Tree Classifier", out.width = "70%", out.height= "70%"}
+knitr::include_graphics("../img/all-features-classification-report.png")
+```
 
 ### Improving the model
 
@@ -139,31 +131,36 @@ The 'best' questions found by `RFE` were questions 4, 5, 6, 8, and 10.
 
 However, when fitting a new `Decision Tree Classifier` with only these features, the recall score got worse on both the training set and the validation set.  See the classification report for the top five questions below:
 
-![](../img/top-five-classification-report.png)
+```{r plot 5, echo=FALSE, fig.cap="Figure 5. Classification Report for a Decision Tree Classifier, using top 5 questions", out.width = "70%", out.height= "70%"}
+knitr::include_graphics("../img/top-five-classification-report.png")
+```
 
 Similarly, choosing all the questions as features and no other features yielded worse results than our initial model.
 
-![](../img/ten-questions-classification-report.png)
+```{r plot 6, echo=FALSE, fig.cap="Figure 6. Classification Report for a Decision Tree Classifier, using all 10 questions", out.width = "70%", out.height= "70%"}
+knitr::include_graphics("../img/ten-questions-classification-report.png")
+```
 
 
 
-#  Results & Discussion
-
-1. Start with commenting about exploratory plots (insert Thomas' EDA plots)
-
-### Final Results
+# Final Results/Discussion
 
 After selecting a model with grid search cross-validation and deciding to use all the features of the dataset, we used our Decision Tree model to predict results on our test set. Unfortunately, the recall score was far below that of our validation set. 
 
 Classification report of final model on test set:
 
-![](../img/all-features-testset-classification-report.png)
+```{r plot 7, echo=FALSE, fig.cap="Figure 7. Classification Report for a Decision Tree Classifier, using all  features", out.width = "70%", out.height= "70%"}
+knitr::include_graphics("../img/all-features-testset-classification-report.png")
+```
+
 
 A recall score of 0.07 is worse than we were expecting. 
 
 ROC curve:
+```{r plot 8, echo=FALSE,  fig.cap="Figure 8. Decision Tree Classifier ROC Curve", out.width = '50%', out.height= '50%'}
+knitr::include_graphics("../img/ROC.png")
+```
 
-![](../img/ROC.png)
 
 In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization.
 
@@ -173,62 +170,11 @@ There were 131 rows that contained "?" or "other" values in the "country_of_res"
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
 
+# Code Attributions
+
+The following programming languages were used for this project: Python[@Python] and R[@R]. The following R packages were used: tidyverse[@tidyverse],knitr[@knitr], reshape2[@reshape2], docopt[@docopt], caret[@Kuhn09thecaret], and kableExtra. The following Python packages were used:docopt[@docoptpython], zipfile, pandas, urllib, requests, sklearn, numpy, scipy, and altair.
+
 
 
 
 # References
-
-
-<div id="refs" class="references">
-
-<div id="ref-allison2012toward">
-
-Allison, Carrie, Bonnie Auyeung, and Simon Baron-Cohen. 2012. “Toward
-Brief ‘Red Flags’ for Autism Screening: The Short Autism Spectrum
-Quotient and the Short Quantitative Checklist in 1,000 Cases and 3,000
-Controls.” *Journal of the American Academy of Child & Adolescent
-Psychiatry* 51 (2). Elsevier: 202–12.
-
-</div>
-
-<div id="ref-R">
-
-R Core Team. 2019. *R: A Language and Environment for Statistical
-Computing*. Vienna, Austria: R Foundation for Statistical Computing.
-<https://www.R-project.org/>.
-
-</div>
-
-<div id="ref-Fadi">
-
-Thabtah, Fadi. 2019. “An Accessible and Efficient Autism Screening
-Method for Behavioural Data and Predictive Analyses.” *Health
-Informatics Journal* 25 (4): 1739–55.
-<https://doi.org/10.1177/1460458218796636>.
-
-</div>
-
-<div id="ref-Python">
-
-Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
-Scotts Valley, CA: CreateSpace.
-
-</div>
-
-<div id="ref-tidyverse">
-
-Wickham, Hadley. 2017. *Tidyverse: Easily Install and Load the
-’Tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
-
-</div>
-
-<div id="ref-knitr">
-
-Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research
-in R.” In *Implementing Reproducible Computational Research*, edited by
-Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman;
-Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
-
-</div>
-
-</div>
