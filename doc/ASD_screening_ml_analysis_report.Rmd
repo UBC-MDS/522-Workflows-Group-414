@@ -32,9 +32,14 @@ The Autism Spectrum Quotient-10<sup>3</sup> ([AQ-10](https://www.nice.org.uk/gui
 
 Using this metric, the ASD app has the following performance.
 
-(Insert Confusion Matrix)
+```{r plot 2, echo=FALSE, fig.cap="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
+knitr::include_graphics("../img/02_confusion_matrix.png")
+```
+
+Figure above depicts a confusion matrix of the true Diagnoses of ASD and the ASD-10 result. This confusion matrix will act as a baseline for how our model compares to the ASD-10 prediction.  The ASD-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a manageable false negative rate of 33 cases which is a positive sign because as a screening test they do not want to miss out on potential patients.  
 
 Currently, all 10 prompts have equal importance in the app's classification process. Our project aims to explore which survey questions are the most effective predictors. Could those be weighted more heavily in future ASD predictions? Additionally, are these survey questions more useful in our models, compared to an individual's background (age, gender, ethnicity)?
+
 
 # Methods
 
@@ -76,6 +81,23 @@ The following programming were used for this project: Python[@Python] and R[@R].
 
 1. Start with commenting about exploratory plots (insert Thomas' EDA plots)
 
+To start, we explored the correlational relationships between the different AQ-10 survey questions.
+
+```{r plot 1, echo=FALSE, fig.cap="Figure 2. Correlation heatmap of between questions on the ASD_10"}
+knitr::include_graphics("../img/01_corr_heatmap.png")
+```
+
+In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results. 
+
+Next, we explored how the result, the cumulative score of the survey, related to autism diagnosis.
+
+```{r plot 3, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
+knitr::include_graphics("../img/03_prop_result.png")
+```
+
+
+The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 are associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, the survey does show some effectiveness in classifying autism, but it isn't perfect. 
+
 2. Talk about the results of ML (perhaps a table of performance, or another visual if we are feeling creative)
 
 # Limitations/Assumptions
@@ -86,31 +108,3 @@ Our original intention was to use survey data from children, adolescents, and ad
 
 
 # References
-
-
-
-
-
-
-
-
-```{r plot 1, echo=FALSE, fig.cap="Figure 1. Correlation heatmap of between questions on the ASD_10"}
-knitr::include_graphics("../img/01_corr_heatmap.png")
-```
-
-Figure above depicts the correlation between questions on ASD-10. None of the questions have a high correlation between each other and highest correlation is .6. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results.
-
-
-```{r plot 2, echo=FALSE, fig.cap="Figure 2. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results"}
-knitr::include_graphics("../img/02_confusion_matrix.png")
-```
-
-Figure above depicts a confusion matrix of the true Diagnoses of ASD and the ASD-10 result. This confusion matrix will act as a baseline for how our model compares to the ASD-10 prediction.  The ASD-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a manageable false negative rate of 33 cases which is a positive sign because as a screening test they do not want to miss out on potential patients.  
-
-
-
-```{r plot 3, echo=FALSE, fig.cap="Figure 3. Proportion of true diagnosis and their final score on the ASD-10"}
-knitr::include_graphics("../img/03_prop_result.png")
-```
-
-Figure above depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Currently, as their score is above six, which is the threshold for the ASD-10 diagnoses, the proportion of true diagnosis is increasing. Furthermore,  if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD.  
