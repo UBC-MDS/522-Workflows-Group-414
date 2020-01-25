@@ -1,11 +1,15 @@
 Autism Spectrum Disorder Screening Machine Learning Analysis
 ================
-Matthew Connel, Thomas Pin and Tejas Phaterpekar
+Matthew Connell, Thomas Pin and Tejas Phaterpekar
 22/01/2020
 
 # Summary
 
-Here we trained \_\_\_\_ models and discovered etc…
+Here we trained several machine learning models from the `sklearn` package in the Python programming language in attempt to find a model that would better and more quickly diagnose autism in adults. We used survey data from the UCI Machine Learning Datasets repository.
+
+The survey data we used consisted of ten questions in addition to other information about the respondent, such as age and country of residence. We looked into whether there were questions that could be disregarded from the survey without having a negative impact on the accuracy of diagnosis.
+
+We eventually chose a Decision Tree Classifier as our model. However, even though we had decent results on training and validation data, our model was poor at predicting outcomes on our test data. 
 
 # Introduction
 
@@ -38,7 +42,7 @@ assessment.
 
 Using this metric, the ASD app has the following performance.
 
-(Insert Confusion Matrix)
+![](../img/roc.png)
 
 Currently, all 10 prompts have equal importance in the app’s
 classification process. Our project aims to explore which survey
@@ -91,8 +95,56 @@ variables before fitting our models. GridSearchCV was used to optimize
 parameters (maybe use the markdown variables to report any
 hyperparameters)
 
-The following programming were used for this project: Python(Van Rossum
-and Drake 2009) and R(R Core Team 2019). The following R packages were
+### Choosing a model
+
+For the analysis, the training data was split into a train set and a validation set. Using these sets of data, we conducted a grid search with cross validation over five different type of models (Logistic Regression, K-Nearest Neighbors, Random Forest Classifier, Decision Tree Classifier, and Support Vector Machine classification). We used `recall` as the scoring method as our goal was not to get the most accurate model, but to get the model that reduced the number of false negatives. Additionally, there was the issue of class imbalance as our dataset consisted mostly of people who were not diagnosed with Autism. Merely choosing accuracy as our goal would have made the model predict only negative outcomes. 
+
+The model with the best precision was found to be a `Decision Tree Classifier` with parameters `max_depth` equal to 20 and `max_features` equal to 50. The classification report on the validation set for this model is below. The recall score is 0.38.
+
+![](../img/all-features-classification-report.png)
+
+### Improving the model
+
+One of the goals of this project was to find which questions on the survey would best predict the diagnosis of Autism and whether or not any of the questions from the survey could be dropped without reducing accuracy. This would help streamline the diagnosis process and save time for everyone.
+
+#### Forward Selection
+
+An attempt at choosing the best questions was made using the feature selection concept of `forward selection`, where a model chooses the feature that best predicts the validation set, and then the next best feature is chosen. However, it was determined that no one question was better than another at predicting the outcomes, so `forward selection` was not useful. 
+
+#### Recursive Feature Elimination
+
+We tried another method of feature selection called `recursive feature elimination`, which looks at all features and then eliminates the one that is the least helpful in predicting the target features. This is done until the desired number of features is selected. 
+
+The 'best' questions found by `RFE` were questions 4, 5, 6, 8, and 10.
+
+However, when fitting a new `Decision Tree Classifier` with only these features, the recall score got worse on both the training set and the validation set.  See the classification report for the top fice questions below:
+
+![](../img/top-five-classification-report.png)
+
+Similarly, choosing all the questions as features and no other features yielded worse results than our initial model.
+
+![](../img/ten-questions-classification-report.png)
+
+### Final Results
+
+After selecting a model with grid search cross-validation and finding the best features, we used our Decision Tree model to predict results on our test set. Unfortunately, the recall score was far below that of our validation set. 
+
+Classification report of final model on test set:
+
+![](../img/all-features-testset-classification-report.png)
+
+A recall score of 0.07 is worse than we were expecting. 
+
+ROC curve:
+
+![](../img/ROC.png)
+
+In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization. 
+
+### Code attribution
+
+The following programming were used for this project: Python (Van Rossum
+and Drake 2009) and R (R Core Team 2019). The following R packages were
 used: tidyverse(Wickham 2017),knitr(Xie 2014), and reshape2. The
 following Python packages were used:docopt, zipfile, pandas, urllib,
 requests, sklearn, numpy, scipy.
