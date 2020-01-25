@@ -132,14 +132,14 @@ Versions will be added when we integreate docker into our project.
 - testthat==2.2.1
 
 **Python packages**:
-- docopt==
-- zipfile==
-- pandas==
-- urllib==
-- requests==
-- sklearn==
-- numpy==
-- scipy==
+- docopt==0.6.2
+- zipfile==3.2
+- pandas==0.25.3
+- urllib==0.21.5
+- requests==2.22.0
+- sklearn==0.22.1
+- numpy==1.17.4
+- scipy==1.3.1
 
 
 ## References: 
