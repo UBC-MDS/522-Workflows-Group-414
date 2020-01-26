@@ -351,7 +351,7 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
 
     chart
 
-    chart.save(roc_path, webdriver='firefox')
+    chart.save(roc_path)
 
 if __name__ == "__main__":
   main(opt["--train_X"], opt["--test_X"],opt["--train_y"], opt["--test_y"], opt["--conf1"], opt["--conf2"], opt["--roc_path"])
