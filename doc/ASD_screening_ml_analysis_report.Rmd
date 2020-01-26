@@ -93,7 +93,7 @@ To start, we explored the correlational relationships between the different AQ-1
 knitr::include_graphics("../img/01_corr_heatmap.png")
 ```
 
-In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of question will swing the results. 
+In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of questions will swing the results. 
 
 Next, we explored how the cumulative score of the survey(`result`) related to an autism diagnosis.
 
@@ -102,7 +102,7 @@ knitr::include_graphics("../img/03_prop_result.png")
 ```
 
 
-The app was designed so that a result of six or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of ten on the ASD-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a zero then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored one on their ASD-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
+The app was designed so that a result of 6 or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of 10 on the ASD-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a 0 then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored 1 on their ASD-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
 
 
 ### Choosing a model
@@ -166,7 +166,7 @@ In future research, we should look into increasing the sensitivity of the model 
 
 # Limitations/Assumptions
 
-There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could had a potential influence on our model.  
+There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling in aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could have had a potential influence on our model.  
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
 
