@@ -95,7 +95,7 @@ To address reproducibility, we plan to implement an analysis pipeline that will 
 
 We plan to create a summary table of all the columns to identify the ranges for each feature and discover any potential outliers. We can also take advantage of the binomial nature of our AQ-10 question features to find the proportion of each question that was answered with a 'yes' (using the mean from the table). One exploratory plot that will be created is a correlational heatmap which will give us insight into potential relationships between predictors and the target variable, as well as any multicolinearity. 
 
-[EDA](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/master/EDA_autism-screening.ipynb)
+[EDA](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/master/src/EDA_autism-screening.ipynb)
 
 ## Sharing the Results
 
