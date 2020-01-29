@@ -39,13 +39,7 @@ knitr::include_graphics("../img/02_confusion_matrix.png")
 
 The confusion matrix in Figure 1 will act as a baseline for how our model compares to the AQ-10 predictions.  The AQ-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a high recall (0.895) with only 33 false negative cases. This is a positive sign because as a screening test they do not want to miss out on potential patients.  
 
-Currently, all 10 prompts have equal importance in the app’s
-classification process. Our project aims to explore which survey
-questions are the most effective predictors. Could those be weighted
-more heavily in future ASD predictions? Additionally, are these survey
-questions more useful in our models, compared to an individual’s
-background (age, gender, ethnicity)?
-
+Currently, all 10 prompts in the survey have equal importance in the app’s classification process which had a recall of 0.895 on the adult data. **Using the same data, are we able to create a model that is able to increase the recall score, relative to the ASDTest app?**
 
 # Methods
 
