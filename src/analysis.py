@@ -128,24 +128,24 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
     ## Trying Gridsearch on different models to find best
 
     ## Initialize models
-    lr = LogisticRegression()
+    # lr = LogisticRegression()
     dt = DecisionTreeClassifier(random_state=414)
     rf = RandomForestClassifier(random_state=414)
     svm = SVC(random_state=414)
     knn = KNeighborsClassifier()
 
     # Make list for models and a list to store their values
-    estimators = [lr, dt, rf, svm, knn]
+    estimators = [dt, rf, svm, knn]
     best_parameters = []
     best_precision_scores = []
 
     # Make list of dictionaries for parameters
-    params = [{'C':[0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-            'penalty': ['l1', 'l2']},
+    params = [#{'C':[0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+            #'penalty': ['l1', 'l2']},
             {'max_depth': [1, 5, 10, 15, 20, 25, None],
-            'max_features': [3, 5, 10, 20, 25, 50, 100, None]},
+            'max_features': [3, 5, 10, 15, 20, 50, None]},
             {'min_impurity_decrease': [0, 0.25, 0.5],
-            'max_features': [3, 5, 10, 20, 50, 100, 'auto']},
+            'max_features': [3, 5, 10, 20, 50, 'auto']},
             {'C':[0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
             'gamma':[0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100]},
             {'n_neighbors': [2, 5, 10, 15, 20, 50, 100],
