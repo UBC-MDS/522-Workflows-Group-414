@@ -12,8 +12,6 @@ data/clean-data/Xtest-clean-autism-screening.csv data/clean-data/Xtrain-clean-au
 #run eda 
 img/01_corr_heatmap.png img/02_confusion_matrix.png img/03_prop_result.png: src/eda_vis.r
 	Rscript src/eda_vis.r --X_train_path=data/clean-data/Xtrain-clean-autism-screening.csv --y_train_path=data/clean-data/ytrain-clean-autism-screening.csv
-	
-all: 
 
 # Machine learning analysis
 img/ROC.png img/all-features-classification-report.png img/final_confusion_matrix.png img/ten-questions-classification-report.png top-five-classification-report.png data/conf1 data/conf2: src/analysis.py
