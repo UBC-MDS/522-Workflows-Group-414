@@ -1,12 +1,12 @@
 ---
 title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
 author: "Matthew Connell, Thomas Pin and Tejas Phaterpekar"
-date: "22/01/2020"
+date: "22/01/2020 (updated: `r Sys.Date()`)"
 always_allow_html: true
 output: 
   html_document:
     toc: true
-bibliography: asd_refs.bib
+bibliography: ../doc/asd_refs.bib
 ---
 
 ```{r setup, include=FALSE}
