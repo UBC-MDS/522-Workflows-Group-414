@@ -118,6 +118,11 @@ Rscript src/eda_vis.r --X_train_path=data/clean-data/Xtrain-clean-autism-screeni
 # Machine learning analysis
 python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.csv --test_X=data/clean-data/Xtest-clean-autism-screening.csv --train_y=data/clean-data/ytrain-clean-autism-screening.csv --test_y=data/clean-data/ytest-clean-autism-screening.csv --conf1=data/conf1 --conf2=data/conf2 --roc_path=img/ROC.png
 
+# Final Report
+Rscript -e "rmarkdown::render('doc/ASD_screening_ml_analysis_report.Rmd')"
+
+Make All 
+
 ```
 
 ## Dependencies:
