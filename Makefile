@@ -1,5 +1,9 @@
+# ASD data pipe
+# author: Matthew Connell, Thomas Pin and Tejas Phaterpekar
+# date: 2020-01-29
+
 #download
-all: data/Autism-Adult-Data.csv data/clean-data/Xtest-clean-autism-screening.csv data/clean-data/Xtrain-clean-autism-screening.csv data/clean-data/ytest-clean-autism-screening.csv data/clean-data/ytrain-clean-autism-screening.csv img/01_corr_heatmap.png 02_confusion_matrix.png 03_prop_result.png img/ROC.png data/conf1 data/conf2 doc/ASD_screening_ml_analysis_report.html
+all: data/Autism-Adult-Data.csv data/clean-data/Xtest-clean-autism-screening.csv data/clean-data/Xtrain-clean-autism-screening.csv data/clean-data/ytest-clean-autism-screening.csv data/clean-data/ytrain-clean-autism-screening.csv img/01_corr_heatmap.png img/02_confusion_matrix.png img/03_prop_result.png img/ROC.png data/conf1 data/conf2 doc/ASD_screening_ml_analysis_report.html doc/ASD_screening_ml_analysis_report.md 
 
 
 data/Autism-Adult-Data.csv: src/download.py
@@ -18,7 +22,7 @@ img/ROC.png img/all-features-classification-report.png img/final_confusion_matri
 	python src/analysis.py --train_X=data/clean-data/Xtrain-clean-autism-screening.csv --test_X=data/clean-data/Xtest-clean-autism-screening.csv --train_y=data/clean-data/ytrain-clean-autism-screening.csv --test_y=data/clean-data/ytest-clean-autism-screening.csv --conf1=data/conf1 --conf2=data/conf2 --roc_path=img/ROC.png
 	
 #report 
-doc/ASD_screening_ml_analysis_report.html: doc/ASD_screening_ml_analysis_report.Rmd doc/asd_refs.bib
+doc/ASD_screening_ml_analysis_report.html doc/ASD_screening_ml_analysis_report.md: doc/ASD_screening_ml_analysis_report.Rmd doc/asd_refs.bib
 	Rscript -e "rmarkdown::render('doc/ASD_screening_ml_analysis_report.Rmd')"
 	
 clean:
@@ -34,6 +38,7 @@ clean:
 	rm -rf data/conf1 
 	rm -rf data/conf2
 	rm -rf doc/ASD_screening_ml_analysis_report.html
+	rm -rf doc/ASD_screening_ml_analysis_report.md
 	
 	
 	
