@@ -30,9 +30,9 @@ draw_confusion_matrix <- function(cm) {
   
   # create the matrix 
   rect(150, 430, 240, 370, col='#1A64A7')
-  text(195, 435, 'ASD Diagnosed', cex=1.2)
+  text(195, 435, 'ASD Diagnosis', cex=1.2)
   rect(250, 430, 340, 370, col='#91C4DE')
-  text(295, 435, 'ASD-10 Result', cex=1.2)
+  text(295, 435, 'No ASD Diagnosis', cex=1.2)
   text(125, 370, 'Predicted', cex=1.3, srt=90, font=2)
   text(245, 450, 'Actual', cex=1.3, font=2)
   rect(150, 305, 240, 365, col='#91C4DE')
