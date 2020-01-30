@@ -1,7 +1,7 @@
 ---
 title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
 author: "Matthew Connell, Thomas Pin and Tejas Phaterpekar"
-date: "22/01/2020 (updated: 2020-01-29)"
+date: "22/01/2020 (updated: 2020-01-30)"
 always_allow_html: true
 output: 
   html_document:
@@ -29,11 +29,11 @@ The Autism Spectrum Quotient-10 ([AQ-10](https://www.nice.org.uk/guidance/cg142/
 Using this metric on the dataset, the ASDTest app has the following performance.
 
 <div class="figure">
-<img src="../img/02_confusion_matrix.png" alt="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results" width="70%" height="70%" />
-<p class="caption">Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the ASD-10 results</p>
+<img src="../img/02_confusion_matrix.png" alt="Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the AQ-10 results" width="70%" height="70%" />
+<p class="caption">Figure 1. Confusion Matrix between the true ASD Diagnoses and the result of the AQ-10 results</p>
 </div>
 
-The confusion matrix in Figure 1 will act as a baseline for how our model compares to the AQ-10 predictions.  The AQ-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current ASD-10 has a high recall (0.895) with only 33 false negative cases. This is a positive sign because as a screening test they do not want to miss out on potential patients.  
+The confusion matrix in Figure 1 will act as a baseline for how our model compares to the AQ-10 predictions.  The AQ-10 has high false positive rate of 110 cases which is an issue because it will push more participants to contact a healthcare professional and put more stress on the healthcare system as a whole. Additionally, the current AQ-10 has a high recall (0.895) with only 33 false negative cases. This is a positive sign because as a screening test they do not want to miss out on potential patients.  
 
 Currently, all 10 prompts in the survey have equal importance in the app’s classification process which had a recall of 0.895 on the adult data. **Using the same data, are we able to create a model that is able to increase the recall score, relative to the ASDTest app?**
 
@@ -165,21 +165,21 @@ The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screeni
 To start, we explored the correlational relationships between the different AQ-10 survey questions.
 
 <div class="figure">
-<img src="../img/01_corr_heatmap.png" alt="Figure 2. Correlation heatmap of between questions on the ASD_10" width="70%" height="70%" />
-<p class="caption">Figure 2. Correlation heatmap of between questions on the ASD_10</p>
+<img src="../img/01_corr_heatmap.png" alt="Figure 2. Correlation heatmap of between questions on the AQ_10" width="70%" height="70%" />
+<p class="caption">Figure 2. Correlation heatmap of between questions on the AQ_10</p>
 </div>
 
-In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the ASD-10 test is a valid test with a low chance that a combination of questions will swing the results. 
+In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the AQ-10 test is a valid test with a low chance that a combination of questions will swing the results. 
 
 Next, we explored how the cumulative score of the survey(`result`) related to an autism diagnosis.
 
 <div class="figure">
-<img src="../img/03_prop_result.png" alt="Figure 3. Proportion of true diagnosis and their final score on the ASD-10" width="70%" height="70%" />
-<p class="caption">Figure 3. Proportion of true diagnosis and their final score on the ASD-10</p>
+<img src="../img/03_prop_result.png" alt="Figure 3. Proportion of true diagnosis and their final score on the AQ-10" width="70%" height="70%" />
+<p class="caption">Figure 3. Proportion of true diagnosis and their final score on the AQ-10</p>
 </div>
 
 
-The app was designed so that a result of 6 or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of 10 on the ASD-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a 0 then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored 1 on their ASD-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
+The app was designed so that a result of 6 or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of 10 on the AQ-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a 0 then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored 1 on their AQ-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
 
 
 ### Choosing a model
