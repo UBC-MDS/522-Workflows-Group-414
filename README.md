@@ -10,7 +10,7 @@ The survey data we used consisted of ten questions in addition to other informat
 
 We eventually chose a Decision Tree Classifier as our model. However, even though we had decent results on training and validation data, our model was poor at predicting outcomes on our test data.
 
-The dataset4 used in this analysis was obtained from the University of California Irvine Machine learning Repository, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey’s results, the app’s classification, and some background information about the indvidual was recorded.
+The dataset used in this analysis was obtained from the University of California Irvine Machine learning Repository, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey’s results, the app’s classification, and some background information about the indvidual was recorded.
 
 ## Report
 
@@ -21,17 +21,13 @@ The final report can be found [Report](https://github.com/UBC-MDS/522-Workflows-
 To replicate this analysis, clone this github repository, install the necessary [dependencies](#Dependencies), and type the following into your terminal:
 
 ```
-
 Make all 
-
 ```
 
 To reset the repo to a clean state, with no intermediate or results files, run the follow command in the termal from the root directory of this project repository 
 
 ```
-
 Make clean 
-
 ```
 
 ## Dependencies:
