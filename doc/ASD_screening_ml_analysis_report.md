@@ -212,19 +212,9 @@ We tried another method of feature selection called `recursive feature eliminati
 
 The 'best' questions found by `RFE` were questions 4, 5, 6, 8, and 10.
 
-However, when fitting a new `Decision Tree Classifier` with only these features, the recall score got worse on both the training set and the validation set.  See the classification report for the top five questions below:
-
-<div class="figure">
-<img src="../img/top-five-classification-report.png" alt="Figure 5. Classification Report for a Decision Tree Classifier, using top 5 questions" width="70%" height="70%" />
-<p class="caption">Figure 5. Classification Report for a Decision Tree Classifier, using top 5 questions</p>
-</div>
+However, when fitting a new `Decision Tree Classifier` with only these features, the recall score got worse on both the training set and the validation set.  
 
 Similarly, choosing all the questions as features and no other features yielded worse results than our initial model.
-
-<div class="figure">
-<img src="../img/ten-questions-classification-report.png" alt="Figure 6. Classification Report for a Decision Tree Classifier, using all 10 questions" width="70%" height="70%" />
-<p class="caption">Figure 6. Classification Report for a Decision Tree Classifier, using all 10 questions</p>
-</div>
 
 
 
