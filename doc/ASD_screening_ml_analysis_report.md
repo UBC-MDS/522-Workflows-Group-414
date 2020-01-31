@@ -1,7 +1,7 @@
 ---
 title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
 author: "Matthew Connell, Thomas Pin and Tejas Phaterpekar"
-date: "22/01/2020 (updated: 2020-01-30)"
+date: "22/01/2020 (updated: 2020-01-31)"
 always_allow_html: true
 output: 
   html_document:
@@ -186,12 +186,17 @@ The app was designed so that a result of 6 or greater resulted in a recommendati
 
 For the analysis, the training data was split into a train set and a validation set. Using these sets of data, we conducted a grid search with cross validation over five different type of models (Logistic Regression, K-Nearest Neighbors, Random Forest Classifier, Decision Tree Classifier, and Support Vector Machine classification). We used `recall` as the scoring method as our goal was not to get the most accurate model, but to get the model that reduced the number of false negatives. Additionally, there was the issue of class imbalance as our dataset consisted mostly of people who were not diagnosed with Autism. Merely choosing accuracy as our goal would have made the model predict only negative outcomes. 
 
-The model with the best recall was found to be a `Decision Tree Classifier` with parameters `max_depth` equal to 20 and `max_features` equal to 50. The classification report on the validation set for this model is below. The recall score is 0.38.
+The model with the best recall was found to be a `Decision Tree Classifier` with parameters `max_depth` equal to 20 and `max_features` equal to 50. The confusion matrix on the validation set for this model is below. 
 
-<div class="figure">
-<img src="../img/all-features-classification-report.png" alt="Figure 4. Classification Report for a Decision Tree Classifier" width="70%" height="70%" />
-<p class="caption">Figure 4. Classification Report for a Decision Tree Classifier</p>
-</div>
+
+|                     | Does not have autism | Has autism |
+|:-------------------:|:--------------------:|:----------:|
+| Predicted no autism |          73          |     11     |
+|  Predicted autism   |          3           |     5      |
+
+
+
+The recall score is 0.3125.
 
 ### Improving the model
 
@@ -227,17 +232,22 @@ Similarly, choosing all the questions as features and no other features yielded 
 
 After selecting a model with grid search cross-validation and deciding to use all the features of the dataset, we used our Decision Tree model to predict results on our test set. Unfortunately, the recall score was far below that of our validation set. 
 
-Classification report of final model on test set:
-
-<div class="figure">
-<img src="../img/all-features-testset-classification-report.png" alt="Figure 7. Classification Report for a Decision Tree Classifier, using all  features" width="70%" height="70%" />
-<p class="caption">Figure 7. Classification Report for a Decision Tree Classifier, using all  features</p>
-</div>
+Confusion matrix of final model on test set:
 
 
-A recall score of 0.07 is worse than we were expecting. 
+|                     | Does not have autism | Has autism |
+|:-------------------:|:--------------------:|:----------:|
+| Predicted no autism |          82          |     14     |
+|  Predicted autism   |          18          |     1      |
+
+
+
+
+The final recall score is 0.0666667.
+
 
 ROC curve:
+
 <div class="figure">
 <img src="../img/ROC.png" alt="Figure 8. Decision Tree Classifier ROC Curve" width="50%" height="50%" />
 <p class="caption">Figure 8. Decision Tree Classifier ROC Curve</p>
