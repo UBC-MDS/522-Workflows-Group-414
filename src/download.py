@@ -45,6 +45,7 @@ def main(url, zip_folder, data_name):
         os.makedirs(new_directory)
     
     # open the zip folder and write binary content to disk
+    # Test to make sure file is a zipfile, raise comprehensable exception
     try:
         with open(zip_folder, 'wb') as f:
             assert(type(f) == _io.BufferedWriter)
