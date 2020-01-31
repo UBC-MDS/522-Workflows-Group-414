@@ -55,20 +55,20 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
 
     warnings.filterwarnings(action='ignore', category=FitFailedWarning)
 
-    
+    # import the already split datasets
     X_train = pd.read_csv(train_X, index_col=0)
     y_train = pd.read_csv(train_y, index_col=0)
     X_test = pd.read_csv(test_X, index_col=0)
     y_test = pd.read_csv(test_y, index_col=0)
 
-    # y_train = X_train['autism']
-    # X_train = X_train.drop(columns=['autism'])
-    # y_test = X_test['autism']
-    # X_test = X_test.drop(columns=['autism'])
 
+    # Test that X_train has more rows the X_test
+    try:
+        assert(X_train.shape[0] > X_test.shape[0])
+    except Exception as bad_size:
+        print("X_train should have more rows than X_test.\nDid you put them in the wrong order?")
 
     # Make validation set 
-
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=414)
 
     numeric_features = ["age", 
@@ -84,9 +84,6 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
                         "Class/ASD"]
 
     other_columns = list(X_train.columns[0:10])
-
-
-
 
     preprocessor = ColumnTransformer(sparse_threshold=0,
         transformers=[
