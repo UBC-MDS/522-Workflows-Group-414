@@ -182,8 +182,8 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
     prelim_matrix = pd.DataFrame(confusion_matrix(y_valid, dt.predict(X_valid)))
 
 
-    preliminary_matrix = prelim_matrix.rename(columns={0:"predicted no", 1:'predicted yes'}, 
-                    index={0:"actual no", 1:'actual yes'}).swapaxes(0,1)
+    preliminary_matrix = prelim_matrix.rename(columns={0:"Predicted no autism", 1:'Predicted autism'}, 
+                index={0:"Does not have autism", 1:'Has autism'})
 
     preliminary_matrix.to_csv(conf1)
 
@@ -321,8 +321,8 @@ def main(train_X, test_X, train_y, test_y, conf1, conf2, roc_path):
 
     conf_matrix = pd.DataFrame(confusion_matrix(y_test, dt.predict(X_test)))
 
-    final_matrix = conf_matrix.rename(columns={0:"predicted no", 1:'predicted yes'}, 
-                    index={0:"actual no", 1:'actual yes'}).swapaxes(0,1)
+    final_matrix = conf_matrix.rename(columns={0:"Predicted no autism", 1:'Predicted autism'}, 
+                index={0:"Does not have autism", 1:'Has autism'})
 
     final_matrix.to_csv(conf2)
 
