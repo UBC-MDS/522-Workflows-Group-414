@@ -157,13 +157,18 @@ knitr::include_graphics("../img/ROC.png")
 ```
 
 
-In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization.
 
 # Limitations/Assumptions
 
 There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling in aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could have had a potential influence on our model.  
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
+
+# Future Considerations
+
+In future research, we should look into increasing the sensitivity of the model against false negatives. In our study we only looked at a handful of model types. One popular area when it comes to machine learning is the use of gradient boosting algorithms which have shown to perform well in many different situations. One model we plan to explore is the Light Gradient Boosting method, which is a decision tree classifier that utilizes gradient boosting. We could also create an ensemble of different models, which could lead to a better prediction performance. Furthermore,  extensive hyperparameter optimization may allow us to redue the error on our validation set and achieve a better recall on the test data. 
+
+Feature engineering is extremely important in machine learning. It would be beneficial to contact domain experts to discuss new features or feature combinations that could lend useful information to model training and performance. For example, the questions in the AQ-10 survey are associated with categories, such as "imagination" or "attention". We could potentially group the questions of the survey into semantic categories which could act as an entirely new feature in our model.
 
 # Code Attributions
 

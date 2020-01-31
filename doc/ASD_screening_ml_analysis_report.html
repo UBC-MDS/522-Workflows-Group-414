@@ -373,7 +373,7 @@ summary {
 
 <h1 class="title toc-ignore">Autism Spectrum Disorder Screening Machine Learning Analysis</h1>
 <h4 class="author">Matthew Connell, Thomas Pin and Tejas Phaterpekar</h4>
-<h4 class="date">22/01/2020 (updated: 2020-01-30)</h4>
+<h4 class="date">22/01/2020 (updated: 2020-01-31)</h4>
 
 </div>
 
@@ -390,6 +390,7 @@ summary {
 </ul></li>
 <li><a href="#final-resultsdiscussion">Final Results/Discussion</a></li>
 <li><a href="#limitationsassumptions">Limitations/Assumptions</a></li>
+<li><a href="#future-considerations">Future Considerations</a></li>
 <li><a href="#code-attributions">Code Attributions</a></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -745,12 +746,16 @@ ROC curve:
 Figure 8. Decision Tree Classifier ROC Curve
 </p>
 </div>
-<p>In future research, we should look into increasing the sensitivity of the model against false negatives, contact domain experts for assistance in feature engineering, and delve deeper into hyperparameter optimization.</p>
 </div>
 <div id="limitationsassumptions" class="section level1">
 <h1>Limitations/Assumptions</h1>
 <p>There were 131 rows that contained “?” or “other” values in the “country_of_res”, “relation”, and “age” columns. It is possible that “?” values resulted in participants not filling in aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could have had a potential influence on our model.</p>
 <p>Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.</p>
+</div>
+<div id="future-considerations" class="section level1">
+<h1>Future Considerations</h1>
+<p>In future research, we should look into increasing the sensitivity of the model against false negatives. In our study we only looked at a handful of model types. One popular area when it comes to machine learning is the use of gradient boosting algorithms which have shown to perform well in many different situations. One model we plan to explore is the Light Gradient Boosting method, which is a decision tree classifier that utilizes gradient boosting. We could also create an ensemble of different models, which could lead to a better prediction performance. Furthermore, extensive hyperparameter optimization may allow us to redue the error on our validation set and achieve a better recall on the test data.</p>
+<p>Feature engineering is extremely important in machine learning. It would be beneficial to contact domain experts to discuss new features or feature combinations that could lend useful information to model training and performance. For example, the questions in the AQ-10 survey are associated with categories, such as “imagination” or “attention”. We could potentially group the questions of the survey into semantic categories which could act as an entirely new feature in our model.</p>
 </div>
 <div id="code-attributions" class="section level1">
 <h1>Code Attributions</h1>
