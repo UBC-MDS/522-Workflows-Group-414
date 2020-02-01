@@ -1,3 +1,3 @@
-,actual no,actual yes
-predicted no,68,9
-predicted yes,8,7
+,Predicted no autism,Predicted autism
+Does not have autism,68,8
+Has autism,15,1

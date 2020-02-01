@@ -110,7 +110,7 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 # knitr::include_graphics("../img/all-features-classification-report.png")
 
 conf1<-read.csv("../data/conf1")
-names(conf1) <- c("", "Does not have autism", "Has autism")
+names(conf1) <- c("", "Predicted no autism", "Predicted autism")
 
 kable(conf1, align="c", 
       caption = "Preliminary Confusion Matrix",
@@ -119,8 +119,7 @@ kable(conf1, align="c",
 
 ```{r recall_score1, echo=FALSE}
 TP <- conf1[2,3]
-FN <- conf1[1,3]
-
+FN <- conf1[2,2]
 ```
 
 The recall score is `r TP/(TP+FN)`.
@@ -155,7 +154,7 @@ Confusion matrix of final model on test set:
 # knitr::include_graphics("../img/all-features-testset-classification-report.png")
 
 conf2<-read.csv("../data/conf2")
-names(conf2) <- c("", "Does not have autism", "Has autism")
+names(conf2) <- c("", "Predicted no autism", "Predicted autism")
 
 kable(conf2, align="c", 
       caption = "Final Confusion Matrix",
@@ -166,7 +165,7 @@ kable(conf2, align="c",
 
 ```{r recall_score2, echo=FALSE}
 TP <- conf2[2,3]
-FN <- conf2[1,3]
+FN <- conf2[2,2]
 
 ```
 
