@@ -1,7 +1,7 @@
 ---
 title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
 author: "Matthew Connell, Thomas Pin and Tejas Phaterpekar"
-date: "22/01/2020 (updated: 2020-01-31)"
+date: "22/01/2020 (updated: 2020-02-01)"
 always_allow_html: true
 output: 
   html_document:
@@ -191,12 +191,12 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-| Does not have autism |         68          |        8         |
-|      Has autism      |         15          |        1         |
+| Does not have autism |         67          |        9         |
+|      Has autism      |         11          |        5         |
 
 
 
-The recall score is 0.0625.
+The recall score is 0.3125.
 
 ### Improving the model
 
@@ -227,13 +227,13 @@ Confusion matrix of final model on test set:
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-| Does not have autism |         88          |        12        |
-|      Has autism      |         11          |        4         |
+| Does not have autism |         89          |        11        |
+|      Has autism      |         12          |        3         |
 
 
 
 
-The final recall score is 0.2666667.
+The final recall score is 0.2.
 
 
 ROC curve:
@@ -250,6 +250,8 @@ ROC curve:
 There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling in aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could have had a potential influence on our model.  
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
+
+Additionally, our model was struggling due the structure of the data that we were given. Our model was struggling to find the nuance in the AQ-10 questions because they have been filtered down to a 0 or 1. We would prefer to have the original results of “definitely disagree” to “definitely agree”. This would give our models more freedom of expression than forcing it to look at a binary result. 
 
 # Future Considerations
 
