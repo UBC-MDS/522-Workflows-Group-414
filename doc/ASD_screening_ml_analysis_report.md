@@ -191,12 +191,21 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
+<<<<<<< HEAD
 | Does not have autism |         69          |        7         |
 |      Has autism      |         10          |        6         |
 
 
 
 The recall score is 0.375.
+=======
+| Does not have autism |         67          |        9         |
+|      Has autism      |         11          |        5         |
+
+
+
+The recall score is 0.3125.
+>>>>>>> upstream/master
 
 ### Improving the model
 
@@ -227,7 +236,11 @@ Confusion matrix of final model on test set:
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
+<<<<<<< HEAD
 | Does not have autism |         88          |        12        |
+=======
+| Does not have autism |         89          |        11        |
+>>>>>>> upstream/master
 |      Has autism      |         12          |        3         |
 
 
@@ -250,6 +263,8 @@ ROC curve:
 There were 131 rows that contained "?" or "other" values in the "country_of_res", "relation", and "age" columns. It is possible that "?" values resulted in participants not filling in aspects of the survey. We were unable to easily fill these values without feeling like we would bias our results. Instead, we opted to remove these rows entirely and only use the remaining data. This limits our study because we did lose (18%) of the original data that could have had a potential influence on our model.  
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
+
+Additionally, our model was struggling due the structure of the data that we were given. Our model was struggling to find the nuance in the AQ-10 questions because they have been filtered down to a 0 or 1. We would prefer to have the original results of “definitely disagree” to “definitely agree”. This would give our models more freedom of expression than forcing it to look at a binary result. 
 
 # Future Considerations
 

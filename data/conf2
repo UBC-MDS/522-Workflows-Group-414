@@ -1,3 +1,7 @@
 ,Predicted no autism,Predicted autism
+<<<<<<< HEAD
 Does not have autism,88,12
+=======
+Does not have autism,89,11
+>>>>>>> upstream/master
 Has autism,12,3
