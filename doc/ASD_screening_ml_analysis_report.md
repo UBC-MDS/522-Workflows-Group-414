@@ -1,7 +1,7 @@
 ---
 title: "Autism Spectrum Disorder Screening Machine Learning Analysis"
 author: "Matthew Connell, Thomas Pin and Tejas Phaterpekar"
-date: "22/01/2020 (updated: 2020-01-31)"
+date: "22/01/2020 (updated: 2020-02-01)"
 always_allow_html: true
 output: 
   html_document:
@@ -191,12 +191,12 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-| Does not have autism |         68          |        8         |
-|      Has autism      |         15          |        1         |
+| Does not have autism |         69          |        7         |
+|      Has autism      |         10          |        6         |
 
 
 
-The recall score is 0.0625.
+The recall score is 0.375.
 
 ### Improving the model
 
@@ -228,12 +228,12 @@ Confusion matrix of final model on test set:
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
 | Does not have autism |         88          |        12        |
-|      Has autism      |         11          |        4         |
+|      Has autism      |         12          |        3         |
 
 
 
 
-The final recall score is 0.2666667.
+The final recall score is 0.2.
 
 
 ROC curve:
