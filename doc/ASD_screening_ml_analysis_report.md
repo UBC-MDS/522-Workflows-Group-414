@@ -189,14 +189,14 @@ For the analysis, the training data was split into a train set and a validation 
 The model with the best recall was found to be a `Decision Tree Classifier` with parameters `max_depth` equal to 20 and `max_features` equal to 50. The confusion matrix on the validation set for this model is below. 
 
 
-|                     | Does not have autism | Has autism |
-|:-------------------:|:--------------------:|:----------:|
-| Predicted no autism |          73          |     11     |
-|  Predicted autism   |          3           |     5      |
+|                      | Predicted no autism | Predicted autism |
+|:--------------------:|:-------------------:|:----------------:|
+| Does not have autism |         68          |        8         |
+|      Has autism      |         15          |        1         |
 
 
 
-The recall score is 0.3125.
+The recall score is 0.0625.
 
 ### Improving the model
 
@@ -225,15 +225,15 @@ After selecting a model with grid search cross-validation and deciding to use al
 Confusion matrix of final model on test set:
 
 
-|                     | Does not have autism | Has autism |
-|:-------------------:|:--------------------:|:----------:|
-| Predicted no autism |          82          |     14     |
-|  Predicted autism   |          18          |     1      |
+|                      | Predicted no autism | Predicted autism |
+|:--------------------:|:-------------------:|:----------------:|
+| Does not have autism |         88          |        12        |
+|      Has autism      |         11          |        4         |
 
 
 
 
-The final recall score is 0.0666667.
+The final recall score is 0.2666667.
 
 
 ROC curve:
