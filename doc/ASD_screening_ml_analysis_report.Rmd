@@ -151,7 +151,7 @@ After selecting a model with grid search cross-validation and deciding to use al
 
 Confusion matrix of final model on test set:
 
-```{r plot 7, echo=FALSE, fig.cap="Figure 7. Classification Report for a Decision Tree Classifier, using all  features", out.width = "70%", out.height= "70%"}
+```{r plot 7, echo=FALSE, fig.cap="Figure 7. Confusion Matrix for a Decision Tree Classifier, using all  features", out.width = "70%", out.height= "70%"}
 # knitr::include_graphics("../img/all-features-testset-classification-report.png")
 
 conf2<-read.csv("../data/conf2")
