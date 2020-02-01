@@ -191,21 +191,12 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-<<<<<<< HEAD
-| Does not have autism |         69          |        7         |
-|      Has autism      |         10          |        6         |
+| Does not have autism |         70          |        6         |
+|      Has autism      |         14          |        2         |
 
 
 
-The recall score is 0.375.
-=======
-| Does not have autism |         67          |        9         |
-|      Has autism      |         11          |        5         |
-
-
-
-The recall score is 0.3125.
->>>>>>> upstream/master
+The recall score is 0.125.
 
 ### Improving the model
 
@@ -236,17 +227,13 @@ Confusion matrix of final model on test set:
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-<<<<<<< HEAD
-| Does not have autism |         88          |        12        |
-=======
-| Does not have autism |         89          |        11        |
->>>>>>> upstream/master
-|      Has autism      |         12          |        3         |
+| Does not have autism |         85          |        15        |
+|      Has autism      |         13          |        2         |
 
 
 
 
-The final recall score is 0.2.
+The final recall score is 0.1333333.
 
 
 ROC curve:

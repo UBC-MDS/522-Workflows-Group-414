@@ -1,3 +1,7 @@
+# analysis.py : take train/test csvs and fit a Decision tree model. Output ROC curve and confusion matrices.
+# author: Matthew Connell, Thomas Pin and Tejas Phaterpekar
+# date: 2020-01-22
+
 """Import .csv in data folder to be split and analyzed by machine learning models. Outputs 2 .csv files which are confusion matrices. Outputs ROC chart with final model.
 
 Usage: analysis.py --train_X=<train> --test_X=<test> --train_y=<train_y> --test_y=<test_y>  --conf1=<conf1> --conf2=<conf2> --roc_path=<roc_path>
