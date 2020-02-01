@@ -1,3 +1,7 @@
+# download.py : download am arff file from within a zipped file from a given url
+# author: Matthew Connell, Thomas Pin and Tejas Phaterpekar
+# date: 2020-01-15
+
 """Downloads .zip url to current folder, unzips arff file, loads data, splits data and saves original CSV, as well as train/test splits into a data folder. Currently supports only .zip URLs with a .arff file inside.
 
 Usage: download.py --url=<url> --zip_folder=<zip_folder> --data_name=<data_name>
