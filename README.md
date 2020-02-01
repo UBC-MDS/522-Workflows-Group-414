@@ -14,7 +14,7 @@ The dataset used in this analysis was obtained from the University of California
 
 ## Report
 
-The final report can be found [Report](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/master/doc/ASD_screening_ml_analysis_report.md)
+The final report can be found [here](https://ubc-mds.github.io/522-Workflows-Group-414/doc/ASD_screening_ml_analysis_report.html)
 
 ## Usage
 
