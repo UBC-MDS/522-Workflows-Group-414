@@ -186,6 +186,8 @@ There were 131 rows that contained "?" or "other" values in the "country_of_res"
 
 Our original intention was to use survey data from children, adolescents, and adults. However, we were unable to access the survey questions used for the Child-AQ-10 and Adolescent-AQ-10, which are different to the Adult-AQ-10 question. As a result, we were limited to addressing questions that focused on solely on adults.
 
+Additionally, our model was struggling due the structure of the data that we were given. Our model was struggling to find the nuance in the AQ-10 questions because they have been filtered down to a 0 or 1. We would prefer to have the original results of “definitely disagree” to “definitely agree”. This would give our models more freedom of expression than forcing it to look at a binary result. 
+
 # Future Considerations
 
 In future research, we should look into increasing the sensitivity of the model against false negatives. In our study we only looked at a handful of model types. One popular area when it comes to machine learning is the use of gradient boosting algorithms which have shown to perform well in many different situations. One model we plan to explore is the Light Gradient Boosting method, which is a decision tree classifier that utilizes gradient boosting. We could also create an ensemble of different models, which could lead to a better prediction performance. Furthermore,  extensive hyperparameter optimization may allow us to redue the error on our validation set and achieve a better recall on the test data. 
