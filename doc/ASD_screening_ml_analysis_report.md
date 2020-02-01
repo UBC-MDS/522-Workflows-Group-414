@@ -24,7 +24,7 @@ We eventually chose a Decision Tree Classifier as our model. However, even thoug
 
 Autism Spectrum Disorder (ASD) is a complex neurodevelopmental condition that impairs social interpretation/communication ability, as well as the presence of repetitive behaviors. Current diagnostic procedures are lengthy and inefficient [@Fadi]. Affecting 1.5% of the population, with many more cases going undetected, an easy-to-implement, effective screening method is warranted. ASDTest, a mobile app, has been introduced to provide an accessible screening method that tells the user whether they should seek professional healthcare opinions, based on a 10 question survey [@allison2012toward]. The ability to recognize and diagnose ASD at an early age can allow the affected to access the healthcare resources and support they will need, in a timely manner. 
 
-The Autism Spectrum Quotient-10 ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated and a participant who receives a total score of greater than 6 is recommendeded for a specialist diagnostic assessment.
+The Autism Spectrum Quotient-10 ([AQ-10](https://www.nice.org.uk/guidance/cg142/resources/autism-spectrum-quotient-aq10-test-pdf-186582493)) consists of 10 questions intended to differentiate characteristics of autism in individuals. Each question has four possible answers: "Definitely Agree", "Slightly Agree, "Slightly Disagree", and "Definitely Disagree". For questions 1, 5, 7, and 10, a value of 1 is assigned for either a "slightly agree" or a "definitely agree" response. For questions 2, 3, 4, 6, 8, and 9, a value of 1 is assigned for either a "slightly disagree" or a "definitely. disagree" response. A cumulative score is calculated and a participant who receives a total score of greater than 6 is recommended for a specialist diagnostic assessment.
 
 Using this metric on the dataset, the ASDTest app has the following performance.
 
@@ -41,7 +41,7 @@ Currently, all 10 prompts in the survey have equal importance in the app’s cla
 
 ## Data
 
-The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the indvidual was recorded. Below is the entire variable set:
+The [dataset<sup>4</sup>](https://archive.ics.uci.edu/ml/datasets/Autism+Screening+Adult)  used in this analysis was obtained from the University of California Irvine Machine learning Repository, uploaded by Fadi Thabtah. Each row represents an individual who participated in the survey. The survey's results, the app's classification, and some background information about the individual was recorded. Below is the entire variable set:
 
 <table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
@@ -169,7 +169,7 @@ To start, we explored the correlational relationships between the different AQ-1
 <p class="caption">Figure 2. Correlation heatmap of between questions on the AQ_10</p>
 </div>
 
-In Figure 2, a maximum pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the AQ-10 test is a valid test with a low chance that a combination of questions will swing the results. 
+In Figure 2, a maximum Pearson correlation was 0.6, between AQ-4 and AQ-9. In general, very low correlational values were observed. Therefore, the AQ-10 test is a valid test with a low chance that a combination of questions will swing the results. 
 
 Next, we explored how the cumulative score of the survey(`result`) related to an autism diagnosis.
 
@@ -179,7 +179,7 @@ Next, we explored how the cumulative score of the survey(`result`) related to an
 </div>
 
 
-The app was designed so that a result of 6 or greater resulted in a recommendation for a specialist opnion. Figure 3 depicts the proportion of true diagnosis and their score out of 10 on the AQ-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a 0 then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored 1 on their AQ-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classfication isn't flawless. 
+The app was designed so that a result of 6 or greater resulted in a recommendation for a specialist opinion. Figure 3 depicts the proportion of true diagnosis and their score out of 10 on the AQ-10. Results below or equal to 6 were associated with lower proportions of autism diagnosis, compared to the higher proportions associated with results greater than 6. Furthermore, if someone scored a 0 then they didn’t have a true diagnosis of ASD which is an appropriate result for a screening test. The only issue is the 15% of people who scored 1 on their AQ-10 but had a true diagnose of ASD. Overall, these observations show that the survey does show some effectiveness in classifying autism, although this classification isn't flawless. 
 
 
 ### Choosing a model
@@ -191,12 +191,12 @@ The model with the best recall was found to be a `Decision Tree Classifier` with
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-| Does not have autism |         67          |        9         |
-|      Has autism      |         11          |        5         |
+| Does not have autism |         72          |        4         |
+|      Has autism      |         10          |        6         |
 
 
 
-The recall score is 0.3125.
+The recall score is 0.375.
 
 ### Improving the model
 
@@ -227,13 +227,13 @@ Confusion matrix of final model on test set:
 
 |                      | Predicted no autism | Predicted autism |
 |:--------------------:|:-------------------:|:----------------:|
-| Does not have autism |         89          |        11        |
-|      Has autism      |         12          |        3         |
+| Does not have autism |         90          |        10        |
+|      Has autism      |         14          |        1         |
 
 
 
 
-The final recall score is 0.2.
+The final recall score is 0.0666667.
 
 
 ROC curve:
@@ -255,7 +255,7 @@ Additionally, our model was struggling due the structure of the data that we wer
 
 # Future Considerations
 
-In future research, we should look into increasing the sensitivity of the model against false negatives. In our study we only looked at a handful of model types. One popular area when it comes to machine learning is the use of gradient boosting algorithms which have shown to perform well in many different situations. One model we plan to explore is the Light Gradient Boosting method, which is a decision tree classifier that utilizes gradient boosting. We could also create an ensemble of different models, which could lead to a better prediction performance. Furthermore,  extensive hyperparameter optimization may allow us to redue the error on our validation set and achieve a better recall on the test data. 
+In future research, we should look into increasing the sensitivity of the model against false negatives. In our study we only looked at a handful of model types. One popular area when it comes to machine learning is the use of gradient boosting algorithms which have shown to perform well in many different situations. One model we plan to explore is the Light Gradient Boosting method, which is a decision tree classifier that utilizes gradient boosting. We could also create an ensemble of different models, which could lead to a better prediction performance. Furthermore,  extensive hyperparameter optimization may allow us to reduce the error on our validation set and achieve a better recall on the test data. 
 
 Feature engineering is extremely important in machine learning. It would be beneficial to contact domain experts to discuss new features or feature combinations that could lend useful information to model training and performance. For example, the questions in the AQ-10 survey are associated with categories, such as "imagination" or "attention". We could potentially group the questions of the survey into semantic categories which could act as an entirely new feature in our model.
 
