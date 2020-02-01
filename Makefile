@@ -4,6 +4,8 @@
 
 #download
 all: data/Autism-Adult-Data.csv data/clean-data/Xtest-clean-autism-screening.csv data/clean-data/Xtrain-clean-autism-screening.csv data/clean-data/ytest-clean-autism-screening.csv data/clean-data/ytrain-clean-autism-screening.csv img/01_corr_heatmap.png img/02_confusion_matrix.png img/03_prop_result.png img/ROC.png data/conf1 data/conf2 doc/ASD_screening_ml_analysis_report.html doc/ASD_screening_ml_analysis_report.md 
+	rm -rf Rplots.pdf 
+	rm -rf Autism-Adult-Data.arff 
 
 
 data/Autism-Adult-Data.csv: src/download.py
@@ -39,6 +41,8 @@ clean:
 	rm -rf data/conf2
 	rm -rf doc/ASD_screening_ml_analysis_report.html
 	rm -rf doc/ASD_screening_ml_analysis_report.md
+	rm -rf Autism-Adult-Data.arff
+	rm -rf Rplots.pdf
 	
 	
 	
