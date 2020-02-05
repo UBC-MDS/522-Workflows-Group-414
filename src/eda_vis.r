@@ -117,7 +117,9 @@ main <- function(X_train_path, y_train_path) {
     theme(axis.title.x=element_blank(),
           axis.ticks.x=element_blank(),
           axis.title.y=element_blank(),
-          axis.ticks.y=element_blank())
+          axis.ticks.y=element_blank(),
+          panel.border = element_blank(), panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
   
   
   ggsave(plot = corr_heatmap, "img/01_corr_heatmap.png", width = 8, height = 5)
@@ -139,7 +141,9 @@ main <- function(X_train_path, y_train_path) {
     ylab("Proportion of Participants")+
     xlab("ASD-10 Test Score")+
     ggtitle("Proportion of Participants by ASD-10 Test Score")+
-    scale_fill_brewer(name = "Diagnosed \nwith Autism", palette = "Paired")
+    scale_fill_brewer(name = "Diagnosed \nwith Autism", palette = "Paired")+
+    theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
   
   ggsave("img/03_prop_result.png", width = 7, height = 5)
   
