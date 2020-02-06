@@ -19,6 +19,8 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_6
 # install docopt python package
 RUN /opt/conda/bin/conda install -y -c anaconda docopt
 
+RUN apt-get update && apt install -y chromium && apt-get install -y libnss3 && apt-get install unzip
+
 # Install chromedriver
 RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
     && unzip /tmp/chromedriver.zip -d /usr/bin/ \
@@ -26,6 +28,10 @@ RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriv
 
 RUN /opt/conda/bin/conda install -y -c conda-forge altair 
 RUN /opt/conda/bin/conda install -y selenium
+
+RUN Rscript -e "install.packages('e1071')"
+
+
 
 
 
