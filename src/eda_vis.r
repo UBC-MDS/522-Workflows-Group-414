@@ -67,6 +67,18 @@ draw_confusion_matrix <- function(cm) {
   text(70, 20, round(as.numeric(cm$overall[2]), 3), cex=1.4)
 }  
 
+#heat map functions 
+#from #http://www.sthda.com/english/wiki/ggplot2-quick-correlation-matrix-heatmap-r-software-and-data-visualization
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+# Get upper triangle of the correlation matrix
+get_upper_tri <- function(cormat){
+  cormat[lower.tri(cormat)]<- NA
+  return(cormat)
+}
+
 
 #' Makes the three EDA plots
 #'
@@ -105,19 +117,31 @@ main <- function(X_train_path, y_train_path) {
   
   #plot 1 heat map
   
-  corr_heatmap <- df_autism  %>% 
+  cormat <- df_autism  %>% 
     select(a_score)  %>% 
-    cor() %>% 
-    melt() %>% 
-    filter(value < 1) %>% 
-    ggplot(aes(x=Var1, y=Var2, fill = value))+
+    cor()
+  
+  melted_cormat <- melt(cormat)
+  
+  upper_tri <- get_lower_tri(cormat)
+  melted_cormat <- melt(upper_tri, na.rm = TRUE) %>% 
+    filter(value < 1)
+  
+  corr_heatmap <- ggplot(melted_cormat, aes(x=Var1, y=Var2, fill = value))+
     geom_tile()+
     ggtitle("Correlation Heatmap")+
     labs(fill = "Correlation")+
     theme(axis.title.x=element_blank(),
           axis.ticks.x=element_blank(),
           axis.title.y=element_blank(),
-          axis.ticks.y=element_blank())
+          axis.ticks.y=element_blank(),
+          legend.justification = c(1, 0),
+          legend.position = c(0.6, 0.7),
+          legend.direction = "horizontal",
+          panel.border = element_blank(), panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+    guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                                 title.position = "top", title.hjust = 0.5))
   
   
   ggsave(plot = corr_heatmap, "img/01_corr_heatmap.png", width = 8, height = 5)
@@ -139,7 +163,9 @@ main <- function(X_train_path, y_train_path) {
     ylab("Proportion of Participants")+
     xlab("ASD-10 Test Score")+
     ggtitle("Proportion of Participants by ASD-10 Test Score")+
-    scale_fill_brewer(name = "Diagnosed \nwith Autism", palette = "Paired")
+    scale_fill_brewer(name = "Diagnosed \nwith Autism", palette = "Paired")+
+    theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
   
   ggsave("img/03_prop_result.png", width = 7, height = 5)
   
