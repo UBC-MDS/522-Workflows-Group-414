@@ -1,8 +1,10 @@
+
 FROM rocker/tidyverse
 
 # Install packages that weren't already in the Rocker/tidyverse image
 RUN Rscript -e "install.packages('caret')"
 RUN Rscript -e "install.packages('kableExtra')"
+
 
 # install the anaconda distribution of python
 RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
@@ -26,6 +28,6 @@ RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriv
 
 RUN /opt/conda/bin/conda install -y -c conda-forge altair 
 RUN /opt/conda/bin/conda install -y selenium
-
-
+RUN apt-get update && apt install -y chromium && apt-get install -y libnss3 && apt-get install unzip
+RUN Rscript -e "install.packages('e1071')"
 
