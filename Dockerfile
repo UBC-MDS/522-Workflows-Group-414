@@ -1,4 +1,5 @@
 
+# Use rocker's tidy verse as the base package
 FROM rocker/tidyverse
 
 # Install packages that weren't already in the Rocker/tidyverse image
@@ -17,7 +18,7 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_6
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
     /opt/conda/bin/conda update -n base -c defaults conda
-    
+
 # install docopt python package
 RUN /opt/conda/bin/conda install -y -c anaconda docopt
 
@@ -26,8 +27,13 @@ RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriv
     && unzip /tmp/chromedriver.zip -d /usr/bin/ \
     && rm /tmp/chromedriver.zip && chown root:root /usr/bin/chromedriver && chmod +x /usr/bin/chromedriver
 
+# install Altair and selenium to produce plots
 RUN /opt/conda/bin/conda install -y -c conda-forge altair 
 RUN /opt/conda/bin/conda install -y selenium
 RUN apt-get update && apt install -y chromium && apt-get install -y libnss3 && apt-get install unzip
+
+# install the R package e1071 for the caret package to run
 RUN Rscript -e "install.packages('e1071')"
 
+# Put anaconda python in path
+ENV PATH="/opt/conda/bin:${PATH}"
