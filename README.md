@@ -18,21 +18,29 @@ The final report can be found [here](https://ubc-mds.github.io/522-Workflows-Gro
 
 ## Usage
 
-To replicate this analysis, clone this github repository, install the necessary [dependencies](#Dependencies), and type the following into your terminal:
+To replicate this analysis, clone this github repository, make sure you have Docker installed, use the command line to navigate to the root directory of the project directory and type in:
+
 
 ```
-Make all 
+docker run --rm -v <PATH_ON_YOUR_COMPUTER>:/522-Workflows-Group-414 mattc514/522-workflows:v1 make -C /522-Workflows-Group-414 all
 ```
 
-To reset the repo to a clean state, with no intermediate or results files, run the follow command in the termal from the root directory of this project repository 
+where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
+
+
+
+To reset the repo to a clean state, with no intermediate or result files, run the follow command in the termal from the root directory of this project repository 
+
 
 ```
-Make clean 
+docker run --rm -v <PATH_ON_YOUR_COMPUTER>:/522-Workflows-Group-414 mattc514/522-workflows:v1 make -C /522-Workflows-Group-414 clean
 ```
+
+where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
 
 ## Dependencies:
 
-Versions will be added when we integreate docker into our project.
+Versions will be added when we integrate docker into our project.
 
 **R packages**:
 - tidyverse==1.2.1 

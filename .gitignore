@@ -109,3 +109,5 @@ Autism-Child-Data.arff
 *.log
 
 .Rproj.user
+
+.Rhistory
