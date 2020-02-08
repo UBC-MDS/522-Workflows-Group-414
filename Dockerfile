@@ -1,6 +1,6 @@
 
 # Authors: Tejas Phaterpekar, Thomas Pin, Matthew Connell
-# Date: Februaru 6, 2020
+# Date: February 6, 2020
 # Summary: This file makes a container with libraries necessary to run analysis on ASD Screening Analysis
 # More info on the analysis here: https://github.com/UBC-MDS/522-Workflows-Group-414
 
