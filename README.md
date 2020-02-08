@@ -18,6 +18,7 @@ The final report can be found [here](https://ubc-mds.github.io/522-Workflows-Gro
 
 ## Usage
 
+### Using Docker
 To replicate this analysis, clone this github repository, make sure you have Docker installed, use the command line to navigate to the root directory of the project directory and type in:
 
 
@@ -29,7 +30,7 @@ where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
 
 
 
-To reset the repo to a clean state, with no intermediate or result files, run the follow command in the termal from the root directory of this project repository 
+To reset the repo to a clean state, with no intermediate or result files, run the follow command in the termal from the root directory of this project repository: 
 
 
 ```
@@ -38,6 +39,17 @@ docker run --rm -v <PATH_ON_YOUR_COMPUTER>:/522-Workflows-Group-414 mattc514/522
 
 where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
 
+### Without Docker
+
+To replicate this analysis, clone this github repository, install the necessary dependencies, and type the following into your terminal while in the projects root directory:
+
+```
+Make all 
+```
+To reset the repo to a clean state, with no intermediate or results files, run the follow command in the termal from the root directory of this project repository:
+```
+Make clean 
+```
 ## Dependencies:
 
 Versions will be added when we integrate docker into our project.
