@@ -74,6 +74,14 @@ Finally, to reset the repo to a clean state, with no intermediate or result file
 make clean
 ```
 
+## Makefile2graph
+
+Graphical representation of file structure:
+
+![](img/Makefile.png)
+
+Direct [link](https://github.com/UBC-MDS/522-Workflows-Group-414/blob/589582a79604415f45e603544ad9402ab843d35e/img/Makefile.png)
+
 
 ## License
 
