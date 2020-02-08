@@ -18,6 +18,8 @@ The final report can be found [here](https://ubc-mds.github.io/522-Workflows-Gro
 
 ## Usage
 
+### Docker
+
 To replicate this analysis, clone this github repository, make sure you have Docker installed, use the command line to navigate to the root directory of the project directory and type in:
 
 
@@ -29,7 +31,7 @@ where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
 
 
 
-To reset the repo to a clean state, with no intermediate or result files, run the follow command in the termal from the root directory of this project repository 
+To reset the repo to a clean state, with no intermediate or result files, run the follow command in the terminal from the root directory of this project repository 
 
 
 ```
@@ -38,9 +40,9 @@ docker run --rm -v <PATH_ON_YOUR_COMPUTER>:/522-Workflows-Group-414 mattc514/522
 
 where `<PATH_ON_YOUR_COMPUTER>` is the absolute path to the project directory.
 
-## Dependencies:
+### Make
 
-Versions will be added when we integrate docker into our project.
+Alternatively, if you do not wish to use Docker, you can replicate this analysis using `Make`. First, clone this github repository. Next, ensure you have the following dependencies installed:
 
 **R packages**:
 - tidyverse==1.2.1 
@@ -59,6 +61,19 @@ Versions will be added when we integrate docker into our project.
 - numpy==1.17.4
 - scipy==1.3.1
 - altair==3.2.0
+
+Then use the command line to navigate to the root directory of the project directory and type in:
+
+```
+make all 
+```
+
+Finally, to reset the repo to a clean state, with no intermediate or result files, run the follow command in the terminal from the root directory of this project repository:
+
+```
+make clean
+```
+
 
 ## License
 
